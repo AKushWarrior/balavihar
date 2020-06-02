@@ -3,6 +3,6 @@ import 'package:get/get.dart';
 
 class AboutPage extends StatelessWidget {
   Widget build(context) {
-    return GetBuilder();
+
   }
 }

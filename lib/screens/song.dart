@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../business/assembly.dart';
 import '../business/bhajans.dart';
 import '../business/general.dart';
 import '../business/patriotic.dart';
@@ -14,15 +13,20 @@ class SongPage extends StatelessWidget {
 
   Widget build(context) {
     Controller control = mapTypes[type];
-    return GetBuilder<Controller>(init: control, builder: (Controller val) {});
+    return GetBuilder<Controller>(init: control, builder: (Controller val) {
+
+    });
   }
 }
 
-enum SongType { patriotic, bhajan, shlokam, assembly }
+enum SongType { patriotic, bhajan, shlokam }
 
 final Map<SongType, Controller> mapTypes = {
-  SongType.shlokam: ShlokamController(),
-  SongType.assembly: AssemblyController(),
-  SongType.bhajan: BhajanController(),
-  SongType.patriotic: PatrioticController(),
+  SongType.shlokam: shlokamController,
+  SongType.bhajan: bhajanController,
+  SongType.patriotic: patrioticController,
 };
+
+final shlokamController = ShlokamController();
+final bhajanController = BhajanController();
+final patrioticController = PatrioticController();

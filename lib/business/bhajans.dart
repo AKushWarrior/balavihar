@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
 
 import 'data/bhajans.dart' as data;
 import 'data/setup.dart';
@@ -6,7 +7,7 @@ import 'general.dart';
 
 class BhajanModel extends Model {
   @override
-  List<String> fetchKeys() => data.songData.keys;
+  List<String> fetchKeys() => data.songData.keys.toList();
 
   @override
   BhajanUnit findByKey(String key) {
@@ -15,7 +16,7 @@ class BhajanModel extends Model {
     var subunits = List.generate(
         lyrics.length,
         (i) => SubUnit('$key.${i + 1}', lyrics[i][SubSongInfo.lyric],
-            lyrics[i][SubSongInfo.music]));
+            lyrics[i][SubSongInfo.music], this));
     return BhajanUnit(
       key,
       song[SongInfo.name],
@@ -25,18 +26,19 @@ class BhajanModel extends Model {
       song[SongInfo.desc],
       song[SongInfo.author],
       song[SongInfo.date],
+      this,
     );
   }
 }
 
 class BhajanUnit extends Unit<SubUnit> {
   BhajanUnit(String key, String name, String musicUrl, String imageUrl,
-      List<SubUnit> lyrics, String desc, String author, String date)
-      : super(key, name, musicUrl, imageUrl, lyrics, desc, author, date);
+      List<SubUnit> lyrics, String desc, String author, String date, Model model)
+      : super(key, name, musicUrl, imageUrl, lyrics, desc, author, date, model);
 }
 
 class BhajanController extends Controller {
-  Model _model = BhajanModel();
+  final Model _model = BhajanModel();
 
   static Controller get to => Get.find();
 
@@ -44,8 +46,13 @@ class BhajanController extends Controller {
   Model get model => _model;
 
   @override
-  void onInit() {}
+  void onInit() {
+    _model.player = new AudioPlayer();
+  }
 
   @override
-  void onClose() {}
+  void onClose() {
+    _model.player.dispose();
+    super.dispose();
+  }
 }

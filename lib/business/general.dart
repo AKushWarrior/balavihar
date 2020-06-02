@@ -15,7 +15,11 @@ abstract class Model {
 
   Unit findByKey(String key);
 
-  static final AudioPlayer player = AudioPlayer();
+  List<Unit> fetchAll() => List.generate(keys.length, (i) => findByKey(keys[i]));
+
+  AudioPlayer player;
+
+  bool isPlaying (String music) => player.icyMetadata.info.url == music;
 }
 
 abstract class Unit<T> {
@@ -29,30 +33,31 @@ abstract class Unit<T> {
   String desc;
   String author;
   String date;
+  Model parent;
 
   Unit(this.key, this.name, this.music, this.imageUrl, this.lyrics, this.desc,
-      this.author, this.date);
+      this.author, this.date, this.parent);
 
   Future<void> play() async {
-    if (!(Model.player.icyMetadata.info.url == music)) {
-      await Model.player.setUrl(music);
+    if (!(parent.player.icyMetadata.info.url == music)) {
+      await parent.player.setUrl(music);
     }
 
-    Model.player.play();
+    parent.player.play();
   }
 
   Future<void> restart() async {
-    if (!(Model.player.icyMetadata.info.url == music)) {
-      await Model.player.setUrl(music);
+    if (!(parent.player.icyMetadata.info.url == music)) {
+      await parent.player.setUrl(music);
     }
 
-    await Model.player.seek(Duration(microseconds: 1));
-    Model.player.play();
+    await parent.player.seek(Duration(microseconds: 1));
+    parent.player.play();
   }
 
   Future<void> pause() async {
-    if ((Model.player.icyMetadata.info.url == music)) {
-      await Model.player.pause();
+    if ((parent.player.icyMetadata.info.url == music)) {
+      await parent.player.pause();
     }
   }
 }
@@ -61,32 +66,33 @@ class SubUnit {
   String lyric;
   String music;
   String key;
+  Model grandparent;
 
-  SubUnit(this.key, this.lyric, this.music);
+  SubUnit(this.key, this.lyric, this.music, this.grandparent);
 
   @override
   String toString() => lyric.toString();
 
   Future<void> play() async {
-    if (!(Model.player.icyMetadata.info.url == music)) {
-      await Model.player.setUrl(music);
+    if (!(grandparent.player.icyMetadata.info.url == music)) {
+      await grandparent.player.setUrl(music);
     }
 
-    Model.player.play();
+    grandparent.player.play();
   }
 
   Future<void> restart() async {
-    if (!(Model.player.icyMetadata.info.url == music)) {
-      await Model.player.setUrl(music);
+    if (!(grandparent.player.icyMetadata.info.url == music)) {
+      await grandparent.player.setUrl(music);
     }
 
-    await Model.player.seek(Duration(microseconds: 1));
-    Model.player.play();
+    await grandparent.player.seek(Duration(microseconds: 1));
+    grandparent.player.play();
   }
 
   Future<void> pause() async {
-    if ((Model.player.icyMetadata.info.url == music)) {
-      await Model.player.pause();
+    if ((grandparent.player.icyMetadata.info.url == music)) {
+      await grandparent.player.pause();
     }
   }
 }
@@ -108,6 +114,6 @@ abstract class Controller extends GetController {
   }
 
   void _processKeys() async {
-    _keys = await model.keys;
+    _keys = model.keys;
   }
 }

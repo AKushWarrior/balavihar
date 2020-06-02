@@ -1,4 +1,4 @@
-name: peninsulabalavihar
+name: peninsulabalvihar
 description: An app containing the Peninsula Balavihar shlokams and songs.
 
 version: 1.0.0+1
@@ -8,6 +8,9 @@ environment:
 
 dependencies:
   get: any
+  flutter_neumorphic: ^2.2.2
+  expansion_tile_card: ^1.0.3
+  google_fonts: ^1.1.0
   just_audio: ^0.1.10
   flutter:
     sdk: flutter

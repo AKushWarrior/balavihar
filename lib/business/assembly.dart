@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
 
 import 'data/assembly.dart' as global;
 import 'data/setup.dart';
@@ -6,7 +7,7 @@ import 'general.dart';
 
 class AssemblyModel extends Model {
   @override
-  List<String> fetchKeys() => global.songData.keys;
+  List<String> fetchKeys() => global.songData.keys.toList();
 
   @override
   AssemblyUnit findByKey(String key) {
@@ -20,18 +21,19 @@ class AssemblyModel extends Model {
       song[SongInfo.desc],
       song[SongInfo.author],
       song[SongInfo.date],
+      this,
     );
   }
 }
 
 class AssemblyUnit extends Unit<String> {
   AssemblyUnit(String key, String name, String music, String imageUrl,
-      List<String> lyrics, String desc, String author, String date)
-      : super(key, name, music, imageUrl, lyrics, desc, author, date);
+      List<String> lyrics, String desc, String author, String date, Model model)
+      : super(key, name, music, imageUrl, lyrics, desc, author, date, model);
 }
 
 class AssemblyController extends Controller {
-  Model _model = AssemblyModel();
+  final Model _model = AssemblyModel();
 
   static Controller get to => Get.find();
 
@@ -39,8 +41,13 @@ class AssemblyController extends Controller {
   Model get model => _model;
 
   @override
-  void onInit() {}
+  void onInit() {
+    _model.player = new AudioPlayer();
+  }
 
   @override
-  void onClose() {}
+  void onClose() {
+    _model.player.dispose();
+    super.dispose();
+  }
 }
