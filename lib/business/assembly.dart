@@ -34,6 +34,8 @@ class AssemblyUnit extends Unit<String> {
 
 class AssemblyController extends Controller {
   final Model _model = AssemblyModel();
+  List<bool> expanded;
+  List<bool> playing;
 
   static Controller get to => Get.find();
 
@@ -42,12 +44,25 @@ class AssemblyController extends Controller {
 
   @override
   void onInit() {
-    _model.player = new AudioPlayer();
+    _model.player = AudioPlayer();
+    expanded = List.generate(20, (i) => false);
+    playing = List.generate(20, (i) => false);
   }
 
   @override
   void onClose() {
     _model.player.dispose();
     super.dispose();
+  }
+
+  void setExpanded(index, newVal) {
+    expanded[index] = newVal;
+    update(this);
+  }
+
+  void setPlaying(index, newVal) {
+    playing = List.generate(20, (i) => false);
+    playing[index] = newVal;
+    update(this);
   }
 }
