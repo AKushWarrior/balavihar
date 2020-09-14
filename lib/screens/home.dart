@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../business/assembly.dart';
-import '../business/shlokams.dart';
-import '../business/patriotic.dart';
-import '../business/bhajans.dart';
+import '../business/page.dart';
+import '../business/multipage.dart';
 import '../business/general.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';

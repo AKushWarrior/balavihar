@@ -5,14 +5,14 @@ import 'data/assembly.dart' as global;
 import 'data/setup.dart';
 import 'general.dart';
 
-class AssemblyModel extends Model {
+class SinglePageModel extends Model {
   @override
   List<String> fetchKeys() => global.songData.keys.toList();
 
   @override
-  AssemblyUnit findByKey(String key) {
+  SinglePageUnit findByKey(String key) {
     var song = global.songData[key];
-    return AssemblyUnit(
+    return SinglePageUnit(
       key,
       song[SongInfo.name],
       song[SongInfo.music],
@@ -26,16 +26,17 @@ class AssemblyModel extends Model {
   }
 }
 
-class AssemblyUnit extends Unit<String> {
-  AssemblyUnit(String key, String name, String music, String imageUrl,
+class SinglePageUnit extends Unit<String> {
+  SinglePageUnit(String key, String name, String music, String imageUrl,
       List<String> lyrics, String desc, String author, String date, Model model)
       : super(key, name, music, imageUrl, lyrics, desc, author, date, model);
 }
 
-class AssemblyController extends Controller {
-  final Model _model = AssemblyModel();
+class SinglePageController extends Controller {
+  final Model _model = SinglePageModel();
   List<bool> expanded;
   List<bool> playing;
+  bool playingAll;
 
   static Controller get to => Get.find();
 
@@ -45,12 +46,14 @@ class AssemblyController extends Controller {
   @override
   void onInit() {
     _model.player = AudioPlayer();
+    playingAll = false;
     expanded = List.generate(20, (i) => false);
     playing = List.generate(20, (i) => false);
   }
 
   @override
   void onClose() {
+    _model.player.stop();
     _model.player.dispose();
     super.dispose();
   }
@@ -63,6 +66,21 @@ class AssemblyController extends Controller {
   void setPlaying(index, newVal) {
     playing = List.generate(20, (i) => false);
     playing[index] = newVal;
+    update(this);
+  }
+
+  void playAll() {
+    playingAll = true;
+    update(this);
+  }
+
+  void pauseAll() {
+    playingAll = false;
+    update(this);
+  }
+
+  void restartAll() {
+    playingAll = true;
     update(this);
   }
 }

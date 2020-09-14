@@ -5,19 +5,19 @@ import 'data/setup.dart';
 import 'data/shlokams.dart' as data;
 import 'general.dart';
 
-class ShlokamModel extends Model {
+class MultiPageModel extends Model {
   @override
   List<String> fetchKeys() => data.songData.keys.toList();
 
   @override
-  ShlokamUnit findByKey(String key) {
+  MultiPageUnit findByKey(String key) {
     var song = data.songData[key];
     var lyrics = song[SongInfo.lyrics];
     var subunits = List.generate(
         lyrics.length,
         (i) => SubUnit('$key.${i + 1}', lyrics[i][SubSongInfo.lyric],
             lyrics[i][SubSongInfo.music], this));
-    return ShlokamUnit(
+    return MultiPageUnit(
       key,
       song[SongInfo.name],
       song[SongInfo.music],
@@ -31,14 +31,14 @@ class ShlokamModel extends Model {
   }
 }
 
-class ShlokamUnit extends Unit<SubUnit> {
-  ShlokamUnit(String key, String name, String musicUrl, String imageUrl,
+class MultiPageUnit extends Unit<SubUnit> {
+  MultiPageUnit(String key, String name, String musicUrl, String imageUrl,
       List<SubUnit> lyrics, String desc, String author, String date, Model model)
       : super(key, name, musicUrl, imageUrl, lyrics, desc, author, date, model);
 }
 
-class ShlokamController extends Controller {
-  final Model _model = ShlokamModel();
+class MultiPageController extends Controller {
+  final Model _model = MultiPageModel();
 
   static Controller get to => Get.find();
 
