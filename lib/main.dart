@@ -20,16 +20,17 @@ class BalviharApp extends StatelessWidget {
           subtitle1: GoogleFonts.merriweather(),
           subtitle2: GoogleFonts.merriweather(),
         ),
+        backgroundColor: Colors.white,
       ),
       initialRoute: '/',
-      namedRoutes: {
-        '/': GetRoute(page: HomePage()),
-        '/assembly': GetRoute(page: AssemblyPage()),
-        '/bhajans': GetRoute(page: SongPage('Bhajans')),
-        '/shlokams': GetRoute(page: SongPage('Shlokams')),
-        '/patriotic': GetRoute(page: SongPage('Patriotic')),
-        '/aboutus': GetRoute(page: AboutPage()),
-      },
+      getPages: [
+        GetPage(name: "/", page: () => HomePage()),
+        GetPage(name: "/assembly", page: () => AssemblyPage()),
+        GetPage(name: "/bhajans", page: () => SongPage('Bhajans')),
+        GetPage(name: "/shlokams", page: () => SongPage('Shlokams')),
+        GetPage(name: "/patriotic", page: () => SongPage('Patriotic')),
+        GetPage(name: "/aboutus", page: () => AboutPage()),
+      ],
     );
   }
 }

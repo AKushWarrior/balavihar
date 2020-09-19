@@ -1,17 +1,16 @@
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 
-import 'data/assembly.dart' as global;
 import 'data/setup.dart';
 import 'general.dart';
 
 class SinglePageModel extends Model {
   @override
-  List<String> fetchKeys() => global.songData.keys.toList();
+  List<String> fetchKeys() => songData.keys.toList();
 
   @override
   SinglePageUnit findByKey(String key) {
-    var song = global.songData[key];
+    var song = songData[key];
     return SinglePageUnit(
       key,
       song[SongInfo.name],
@@ -37,6 +36,7 @@ class SinglePageController extends Controller {
   List<bool> expanded;
   List<bool> playing;
   bool playingAll;
+  bool pausedAll = false;
 
   static Controller get to => Get.find();
 
@@ -55,32 +55,48 @@ class SinglePageController extends Controller {
   void onClose() {
     _model.player.stop();
     _model.player.dispose();
-    super.dispose();
+    super.onClose();
   }
 
   void setExpanded(index, newVal) {
     expanded[index] = newVal;
-    update(this);
+    update();
   }
 
   void setPlaying(index, newVal) {
     playing = List.generate(20, (i) => false);
     playing[index] = newVal;
-    update(this);
+    update();
   }
 
   void playAll() {
     playingAll = true;
-    update(this);
+    if (!pausedAll) {
+      model.player.load(
+        ConcatenatingAudioSource(
+            children: List.generate(
+                model.songData.length,
+                    (int i) =>
+                    ProgressiveAudioSource(Uri.parse(
+                        model.songData.values.toList()[i][SongInfo.music])))),
+      );
+    }
+    pausedAll = false;
+    model.player.play();
+    update();
   }
 
   void pauseAll() {
     playingAll = false;
-    update(this);
+    model.player.pause();
+    pausedAll = true;
+    update();
   }
 
   void restartAll() {
     playingAll = true;
-    update(this);
+    model.player.seek(Duration(milliseconds: 0), index: 0);
+    model.player.play();
+    update();
   }
 }

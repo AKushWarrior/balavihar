@@ -5,13 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:peninsulabalvihar/business/page.dart';
 
 Widget bottomBarBuilder(SinglePageController controller) {
-  return Container(
-    width: Get.width,
-    height: Get.height / 10,
-    alignment: Alignment.bottomCenter,
-    padding: null,
-    child: Center(
-      child: ButtonBar(
+  return BottomAppBar(
+    child: Container(
+      margin: EdgeInsets.all(10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           NeumorphicButton(
             style: NeumorphicStyle(
@@ -28,7 +26,10 @@ Widget bottomBarBuilder(SinglePageController controller) {
             pressed: controller.playing.contains(true) || controller.playingAll
                 ? true
                 : null,
-            onPressed: controller.playAll,
+            onPressed:
+                controller.playing.contains(true) || controller.playingAll
+                    ? null
+                    : controller.playAll,
           ),
           NeumorphicButton(
             style: NeumorphicStyle(
@@ -42,7 +43,7 @@ Widget bottomBarBuilder(SinglePageController controller) {
                   color: Colors.black),
             ),
             pressed: controller.playingAll ? null : true,
-            onPressed: controller.pauseAll,
+            onPressed: controller.playingAll ? controller.pauseAll : null,
           ),
           NeumorphicButton(
             style: NeumorphicStyle(
@@ -57,7 +58,7 @@ Widget bottomBarBuilder(SinglePageController controller) {
               ),
             ),
             pressed: controller.playingAll ? null : true,
-            onPressed: controller.restartAll,
+            onPressed: controller.playingAll ? null : controller.restartAll,
           ),
         ],
       ),

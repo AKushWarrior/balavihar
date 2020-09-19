@@ -36,16 +36,20 @@ Container cardBuilder(
                   icon: controller.playing[index]
                       ? Icon(Icons.refresh)
                       : Icon(Icons.play_arrow),
-                  onPressed: () {
+                  onPressed: controller.playingAll ? null : () {
                     unit.play();
                     controller.setPlaying(index, true);
-                  }),
+                  },
+                  disabledColor: Colors.grey,
+              ),
               IconButton(
-                  icon: Icon(Icons.stop),
-                  onPressed: () {
+                  icon: Icon(Icons.pause),
+                  onPressed: controller.playingAll ? null : () {
                     controller.model.player.stop();
                     controller.setPlaying(index, false);
-                  }),
+                  },
+                disabledColor: Colors.grey,
+                  ),
             ])),
         onExpansionChanged: (b) {
           if (b)

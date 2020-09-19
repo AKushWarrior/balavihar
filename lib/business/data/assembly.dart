@@ -13,7 +13,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
       'Achaarya devO bhava',
       'Athithi devO bhava'
     ],
-    SongInfo.music: 'https://drive.google.com/uc?export=download&id=1GEzk624qVKShb2YRv3kuNke9985fm2H_',
+    SongInfo.music: 'https://balvihar.s3-us-west-1.amazonaws.com/assembly/maatrodevo.m4a',
   },
   '1.2': {
     SongInfo.name: 'Setting Intentions',
@@ -26,7 +26,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
       'Priyam bruyaat',
       'Na bruyaat sathyam apriyam',
     ],
-    SongInfo.music: 'https://drive.google.com/uc?export=download&id=1GEzk624qVKShb2YRv3kuNke9985fm2H_',
+    SongInfo.music: 'https://balvihar.s3-us-west-1.amazonaws.com/assembly/satyambruyaat.m4a',
   },
   '1.3': {
     SongInfo.name: 'Setting Intentions',
@@ -39,7 +39,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
       'Annam na pari-chaksheeta!',
       'Annam bahu kurveeta!',
     ],
-    SongInfo.music: 'https://drive.google.com/uc?export=download&id=1GEzk624qVKShb2YRv3kuNke9985fm2H_',
+    SongInfo.music: 'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
   },
   /*
   'key2': {

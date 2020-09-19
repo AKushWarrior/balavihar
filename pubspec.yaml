@@ -7,13 +7,13 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  get: any
-  flutter_neumorphic: ^2.2.2
+  get: ^2.7.1
+  flutter_neumorphic: ^2.2.0
   google_fonts: ^1.1.0
-  just_audio: ^0.1.10
+  just_audio: ^0.4.4
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.2
+  cupertino_icons: ^1.0.0
 
 dev_dependencies:
   flutter_test:

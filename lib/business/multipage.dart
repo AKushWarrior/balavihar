@@ -53,6 +53,6 @@ class MultiPageController extends Controller {
   @override
   void onClose() {
     _model.player.dispose();
-    super.dispose();
+    super.onClose();
   }
 }

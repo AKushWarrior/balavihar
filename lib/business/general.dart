@@ -1,8 +1,11 @@
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 
+import 'data/setup.dart';
+
 abstract class Model {
   List<String> _keys;
+  Map<String, Map<SongInfo, dynamic>> songData;
 
   List<String> get keys {
     if (_keys == null) {
@@ -39,26 +42,18 @@ abstract class Unit<T> {
       this.author, this.date, this.parent);
 
   Future<void> play() async {
-    if (!(parent.player.icyMetadata.info.url == music)) {
-      await parent.player.setUrl(music);
-    }
-
+    await parent.player.setUrl(music);
     parent.player.play();
   }
 
   Future<void> restart() async {
-    if (!(parent.player.icyMetadata.info.url == music)) {
-      await parent.player.setUrl(music);
-    }
-
+    await parent.player.setUrl(music);
     await parent.player.seek(Duration(microseconds: 1));
     parent.player.play();
   }
 
   Future<void> pause() async {
-    if ((parent.player.icyMetadata.info.url == music)) {
-      await parent.player.pause();
-    }
+    await parent.player.pause();
   }
 }
 
@@ -110,7 +105,7 @@ abstract class Controller extends GetController {
 
   @override
   void onClose() {
-    super.dispose();
+    super.onClose();
   }
 
   void _processKeys() async {

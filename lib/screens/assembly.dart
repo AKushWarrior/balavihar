@@ -4,11 +4,14 @@ import 'package:peninsulabalvihar/screens/builders/bottomBar.dart';
 
 import '../business/page.dart';
 import 'builders/columnPlayers.dart';
+import 'package:peninsulabalvihar/business/data/assembly.dart' as data;
 
 class AssemblyPage extends StatelessWidget {
   Widget build(context) {
+    var controller = SinglePageController();
+    controller.model.songData = data.songData;
     return GetBuilder<SinglePageController>(
-      init: SinglePageController(),
+      init: controller,
       builder: (SinglePageController val) {
         return Scaffold(
           body: Column(children: columnCards('Assembly', val)),
