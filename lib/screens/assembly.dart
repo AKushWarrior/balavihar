@@ -14,7 +14,12 @@ class AssemblyPage extends StatelessWidget {
       init: controller,
       builder: (SinglePageController val) {
         return Scaffold(
-          body: Column(children: columnCards('Assembly', val)),
+          body: Container(
+            color: Colors.orange[800],
+            child: Column(
+              children: columnCards('Assembly', val),
+            ),
+          ),
           bottomNavigationBar: bottomBarBuilder(val),
         );
       },

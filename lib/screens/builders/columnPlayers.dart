@@ -10,7 +10,7 @@ List<Widget> columnCards(String title, Controller control) {
   children.add(
     Container(
       height: 100,
-      margin: EdgeInsets.all(10.0),
+      margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
       child: NeumorphicText(
         title,
         textStyle: NeumorphicTextStyle(

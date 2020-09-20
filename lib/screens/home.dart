@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
             alignment: Alignment.center,
           ),
           Center(
-              child: getNeuButton('Assembly', Colors.orange[700], () => Get.toNamed('/assembly'))),
+              child: getNeuButton('Assembly', Colors.orange[800], () => Get.toNamed('/assembly'))),
           Center(
               child: getNeuButton('Patriotic', Colors.red[700],
                   () => Get.offAndToNamed('/patriotic'))),

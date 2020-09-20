@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -35,8 +38,13 @@ class SinglePageController extends Controller {
   final Model _model = SinglePageModel();
   List<bool> expanded;
   List<bool> playing;
+  int autoExpand;
+
   bool playingAll;
-  bool pausedAll = false;
+  bool pausedAll;
+  bool restartableAll;
+
+  StreamSubscription streamSub;
 
   static Controller get to => Get.find();
 
@@ -47,13 +55,29 @@ class SinglePageController extends Controller {
   void onInit() {
     _model.player = AudioPlayer();
     playingAll = false;
+    pausedAll = false;
+    restartableAll = false;
     expanded = List.generate(20, (i) => false);
     playing = List.generate(20, (i) => false);
+    streamSub = _model.player.playbackEventStream.listen((PlaybackEvent event) {
+      if (event.processingState == ProcessingState.completed) {
+        playingAll = false;
+        expanded = List.generate(20, (i) => false);
+        playing = List.generate(20, (i) => false);
+        autoExpand = null;
+        update();
+      }
+      if (event.currentIndex != null && event.currentIndex != this.autoExpand) {
+        autoExpand = event.currentIndex;
+        update();
+      }
+    });
   }
 
   @override
   void onClose() {
     _model.player.stop();
+    streamSub.cancel();
     _model.player.dispose();
     super.onClose();
   }
@@ -66,6 +90,7 @@ class SinglePageController extends Controller {
   void setPlaying(index, newVal) {
     playing = List.generate(20, (i) => false);
     playing[index] = newVal;
+    autoExpand = index;
     update();
   }
 
@@ -94,9 +119,8 @@ class SinglePageController extends Controller {
   }
 
   void restartAll() {
-    playingAll = true;
-    model.player.seek(Duration(milliseconds: 0), index: 0);
-    model.player.play();
+    pausedAll = false;
+    playAll();
     update();
   }
 }

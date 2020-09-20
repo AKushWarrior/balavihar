@@ -4,7 +4,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
   '1.1': {
     SongInfo.name: 'Setting Intentions',
     SongInfo.author: '',
-    SongInfo.date: '',
+    SongInfo.date: 'To Respect Parents & Teachers',
     SongInfo.desc: '',
     SongInfo.image: '',
     SongInfo.lyrics: [
@@ -19,7 +19,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.name: 'Setting Intentions',
     SongInfo.author: '',
     SongInfo.date: '',
-    SongInfo.desc: '',
+    SongInfo.desc: 'To Speak the Truth',
     SongInfo.image: '',
     SongInfo.lyrics: [
       'Sathyam bruyaat',
@@ -32,7 +32,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.name: 'Setting Intentions',
     SongInfo.author: '',
     SongInfo.date: '',
-    SongInfo.desc: '',
+    SongInfo.desc: 'To Respect & Conserve Food',
     SongInfo.image: '',
     SongInfo.lyrics: [
       'Annam na nindhyAth!',
