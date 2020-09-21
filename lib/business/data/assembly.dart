@@ -51,9 +51,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'To Trust in God',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Yadaa yadaa hi dharmasya, glaanir bhavati bhaarata'
-          'Abhyuthaanam adharmasya tadaatmaanam srujaamyaham'
-          'Paritranaaya saadhunaam vinaashaaya chadushcritaam'
+      'Yadaa yadaa hi dharmasya, glaanir bhavati bhaarata',
+          'Abhyuthaanam adharmasya tadaatmaanam srujaamyaham',
+          'Paritranaaya saadhunaam vinaashaaya chadushcritaam',
           'Dharmasanstha panaarthaaya sambhavaami yuge yuge'
     ],
     SongInfo.music:
@@ -66,9 +66,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Ganapathi Vandana',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Vakratunda Mahäkäya'
-          'Süryakoti Samaprabha'
-          'Nirvighnam Kuru Me Deva'
+      'Vakratunda Mahäkäya',
+          'Süryakoti Samaprabha',
+          'Nirvighnam Kuru Me Deva',
           'Sarvakäryeshu Sarvadä'
     ],
     SongInfo.music:
@@ -81,9 +81,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Karya Siddhi',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Shuklam Baradharam Vishnum'
-          'Shashi Varnam Chaturbhujam'
-          'Prasanna Vadanam Dhyayet'
+      'Shuklam Baradharam Vishnum',
+          'Shashi Varnam Chaturbhujam',
+          'Prasanna Vadanam Dhyayet',
           'Sarva Vighno Pashantaye'
     ],
     SongInfo.music:
@@ -97,8 +97,8 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.image: '',
     SongInfo.lyrics: [
       'Gurur Brahma, Gurur Vishnu,'
-          'Gurur Devo Maheshwara'
-          'Guru Sakshat Parabrahmah'
+          'Gurur Devo Maheshwara',
+          'Guru Sakshat Parabrahmah',
           'Tasmai Shree Guru Veh Namah'
     ],
     SongInfo.music:
@@ -111,9 +111,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Gayatri Mantram',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Om Bhur Bhuvah Swah,'
-          'Tat Savitur Varenyam'
-          'Bhargo Devasya Dhimahi,'
+      'Om Bhur Bhuvah Swah,',
+          'Tat Savitur Varenyam',
+          'Bhargo Devasya Dhimahi,',
           'Dhiyo Yo Nah Prachodayat'
     ],
     SongInfo.music:
@@ -126,9 +126,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Devi Stuti',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Sarva Mangala Maangalye'
-          'Shive Sarvaartha Saadhike'
-          'Sharanye Traiyambake Gouri'
+      'Sarva Mangala Maangalye',
+          'Shive Sarvaartha Saadhike',
+          'Sharanye Traiyambake Gouri',
           'Naaraayani Namostute'
     ],
     SongInfo.music:
@@ -141,9 +141,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Saraswati Slokam',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Saraswati Namastubhyam'
-          'Varadhe Kamarupini'
-          'Vidyarambham Karishyami'
+      'Saraswati Namastubhyam',
+          'Varadhe Kamarupini',
+          'Vidyarambham Karishyami',
           'Siddhir Bhavatu Me Sada'
     ],
     SongInfo.music:
@@ -156,9 +156,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Pratah Smaranam',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Karagre Vasate Lakshmi'
-          'Kara Madhye Saraswathi'
-          'Kara Mule Tu Govindah'
+      'Karagre Vasate Lakshmi',
+          'Kara Madhye Saraswathi',
+          'Kara Mule Tu Govindah',
           'Prabate Kara Darshanam'
     ],
     SongInfo.music:
@@ -171,10 +171,10 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Rama Nama Mahima',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Sri Raama Raama RaamEthi'
-          'RamE RaamE Mano RamE'
-          'Sahasranaama Tat thulyam'
-          'Raama Naama VaraananE'
+      'Sri Raama Raama RaamEthi',
+          'RamE RaamE Mano RamE',
+          'Sahasranaama Tat thulyam',
+          'Raama Naama VaraananE',
           'Sri Raama Naama Varaanana Om Nama Ithi'
     ],
     SongInfo.music:
@@ -187,9 +187,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Vishnu Prayer',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Vanamalee gadhee sarnghee'
-          'Sankhee Chakree cha nandaki'
-          'Sreemaan NaarayaNo Vishnur'
+      'Vanamalee gadhee sarnghee',
+          'Sankhee Chakree cha nandaki',
+          'Sreemaan NaarayaNo Vishnur',
           'VasuDevO abhirakshathu'
     ],
     SongInfo.music:
@@ -202,9 +202,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Hayagriva Stotram',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Gnanananda Mayam Devam'
-          'Nirmala Spatika Kruthim'
-          'Aadharam Sarva Vidyanam'
+      'Gnanananda Mayam Devam',
+          'Nirmala Spatika Kruthim',
+          'Aadharam Sarva Vidyanam',
           'Hayagrivam Upasmahe'
     ],
     SongInfo.music:
@@ -217,9 +217,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'God is All Pervasive',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Tvameva Mata Ch Pita Tvameva |'
-          'Tvameva Bandhush-Ca Sakha Tvameva |'
-          'Tvameva Vidyaa Dravinnam Tvameva |'
+      'Tvameva Mata Ch Pita Tvameva |',
+          'Tvameva Bandhush-Ca Sakha Tvameva |',
+          'Tvameva Vidyaa Dravinnam Tvameva |',
           'Tvameva Sarvam Mama Deva Deva ||'
     ],
     SongInfo.music:
@@ -232,9 +232,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Prayer Before Eating Food',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Annapoorne Sada Poorne'
-          'Shankara Pranavallabhe'
-          'Gyana Vairagya Sidyartham'
+      'Annapoorne Sada Poorne',
+          'Shankara Pranavallabhe',
+          'Gyana Vairagya Sidyartham',
           'Bhikshaam Dehi Cha Parvati'
     ],
     SongInfo.music:
@@ -247,9 +247,9 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Shanti Mantra',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Om Asato Ma Sad Gamaya'
-          'Tamaso Ma Jyotir Gamaya'
-          'Mrityor Ma Amritam Gamaya'
+      'Om Asato Ma Sad Gamaya',
+          'Tamaso Ma Jyotir Gamaya',
+          'Mrityor Ma Amritam Gamaya',
           'Om Shanthi Shanthi Shanthi'
     ],
     SongInfo.music:
