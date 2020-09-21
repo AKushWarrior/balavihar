@@ -57,7 +57,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Dharmasanstha panaarthaaya sambhavaami yuge yuge'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/yadhayadha.m4a',
   },
   '2.1': {
     SongInfo.name: 'Daily Slokhams',
@@ -87,7 +87,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Sarva Vighno Pashantaye'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/vakratundamahakaya.m4a',
   },
   '2.3': {
     SongInfo.name: 'Daily Slokhams',
@@ -102,7 +102,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Tasmai Shree Guru Veh Namah'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/gururbramha.m4a',
   },
   '2.4': {
     SongInfo.name: 'Daily Slokhams',
@@ -117,7 +117,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Dhiyo Yo Nah Prachodayat'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/ombhur.m4a',
   },
   '2.5': {
     SongInfo.name: 'Daily Slokhams',
@@ -132,7 +132,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Naaraayani Namostute'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/sarvamangala.m4a',
   },
   '2.6': {
     SongInfo.name: 'Daily Slokhams',
@@ -147,7 +147,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Siddhir Bhavatu Me Sada'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/saraswatinamastubyam.m4a',
   },
   '2.7': {
     SongInfo.name: 'Daily Slokhams',
@@ -162,7 +162,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Prabate Kara Darshanam'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/karagrevasate.m4a',
   },
   '2.8': {
     SongInfo.name: 'Daily Slokhams',
@@ -178,7 +178,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Sri Raama Naama Varaanana Om Nama Ithi'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/raamaraama.m4a',
   },
   '2.9': {
     SongInfo.name: 'Daily Slokhams',
@@ -193,7 +193,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'VasuDevO abhirakshathu'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/vanamalee.m4a',
   },
   '2.10': {
     SongInfo.name: 'Daily Slokhams',
@@ -208,7 +208,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Hayagrivam Upasmahe'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/gnaananandam.m4a',
   },
   '2.11': {
     SongInfo.name: 'Daily Slokhams',
@@ -223,7 +223,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Tvameva Sarvam Mama Deva Deva ||'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/tvamevamaata.m4a',
   },
   '2.12': {
     SongInfo.name: 'Daily Slokhams',
@@ -238,7 +238,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Bhikshaam Dehi Cha Parvati'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/annapoorne.m4a',
   },
   '2.13': {
     SongInfo.name: 'Daily Slokhams',
@@ -253,7 +253,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Om Shanthi Shanthi Shanthi'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/asatoma.m4a',
   },
   /*
   'key2': {
