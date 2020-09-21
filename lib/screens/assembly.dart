@@ -10,7 +10,7 @@ class AssemblyPage extends StatelessWidget {
   Widget build(context) {
     var controller = SinglePageController();
     controller.model.songData = data.songData;
-    return GetBuilder<SinglePageController>(
+    return Scaffold(body: GetBuilder<SinglePageController>(
       init: controller,
       builder: (SinglePageController val) {
         return Scaffold(
@@ -23,6 +23,6 @@ class AssemblyPage extends StatelessWidget {
           bottomNavigationBar: bottomBarBuilder(val),
         );
       },
-    );
+    ));
   }
 }

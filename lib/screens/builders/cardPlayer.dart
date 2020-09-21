@@ -10,8 +10,8 @@ Container cardBuilder(
     SinglePageController controller,
     int index]) {
   if (unit != null) {
-    title = unit.lyrics[0];
-    subtitle = unit.key + ': ' + unit.name;
+    title = '${unit.key}: ${unit.lyrics[0]}';
+    subtitle = unit.desc;
     lyrics = unit.lyrics;
   }
   List<Widget> childrenList = [];
@@ -27,14 +27,15 @@ Container cardBuilder(
         color: Colors.white,
       ),
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(1000))),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(1000))),
         child: ExpansionTile(
-          initiallyExpanded: controller.autoExpand == index,
+          initiallyExpanded: true,
           leading: controller.expanded[index]
               ? Icon(Icons.arrow_drop_down)
               : Icon(Icons.arrow_right),
           trailing: Container(
-              width: 125,
+              width: 120,
               child: ButtonBar(children: [
                 IconButton(
                   icon: controller.playing[index]
@@ -67,10 +68,12 @@ Container cardBuilder(
           },
           title: Text(
             title,
-            style:
-                TextStyle(color: Colors.black, decorationColor: Colors.orange),
+            style: TextStyle(
+              color: Colors.black,
+              decorationColor: Colors.orange,
+            ),
           ),
-          subtitle: Text(subtitle),
+          //subtitle: Text(subtitle),
           children: childrenList,
         ),
       ),
