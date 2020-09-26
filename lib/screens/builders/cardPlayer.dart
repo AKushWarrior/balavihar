@@ -30,7 +30,8 @@ Container cardBuilder(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(1000))),
         child: ExpansionTile(
-          initiallyExpanded: true,
+          tilePadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 7.5),
+          initiallyExpanded: false,
           leading: controller.expanded[index]
               ? Icon(Icons.arrow_drop_down)
               : Icon(Icons.arrow_right),
@@ -68,6 +69,7 @@ Container cardBuilder(
           },
           title: Text(
             title,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: Colors.black,
               decorationColor: Colors.orange,

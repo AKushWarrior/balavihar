@@ -57,7 +57,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Dharmasanstha panaarthaaya sambhavaami yuge yuge'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'z',
   },
   '2.1': {
     SongInfo.name: 'Daily Slokhams',

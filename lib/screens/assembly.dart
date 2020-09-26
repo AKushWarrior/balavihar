@@ -10,19 +10,19 @@ class AssemblyPage extends StatelessWidget {
   Widget build(context) {
     var controller = SinglePageController();
     controller.model.songData = data.songData;
-    return Scaffold(body: GetBuilder<SinglePageController>(
-      init: controller,
-      builder: (SinglePageController val) {
-        return Scaffold(
-          body: Container(
+    return Scaffold(
+      body: GetBuilder<SinglePageController>(
+        init: controller,
+        builder: (SinglePageController val) {
+          return Container(
             color: Colors.orange[800],
-            child: Column(
+            child: ListView(
               children: columnCards('Assembly', val),
             ),
-          ),
-          bottomNavigationBar: bottomBarBuilder(val),
-        );
-      },
-    ));
+          );
+        },
+      ),
+      bottomNavigationBar: GetBuilder(init: controller, builder: (val) => bottomBarBuilder(val)),
+    );
   }
 }

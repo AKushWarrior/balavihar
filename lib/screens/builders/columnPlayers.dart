@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../business/general.dart';
@@ -10,15 +11,29 @@ List<Widget> columnCards(String title, Controller control) {
   children.add(
     Container(
       height: 100,
-      margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
-      child: NeumorphicText(
-        title,
-        textStyle: NeumorphicTextStyle(
-          fontFamily: GoogleFonts.oswald().fontFamily,
-          fontSize: 48,
+      margin: EdgeInsets.fromLTRB(5, 10, 10, 0),
+      child: Row(/*mainAxisAlignment: MainAxisAlignment.spaceBetween,*/ children: [
+        IconButton(
+          icon: NeumorphicIcon(
+            Icons.arrow_back_ios,
+            size: 36,
+            style: NeumorphicStyle(color: Colors.white),
+            //color: Colors.white,
+          ),
+          onPressed: () => Get.back(),
         ),
-        style: NeumorphicStyle(color: Colors.white),
-      ),
+        Container(width: Get.width/50),
+        Container(
+            alignment: Alignment.center,
+            child: NeumorphicText(
+              title,
+              textStyle: NeumorphicTextStyle(
+                fontFamily: GoogleFonts.oswald().fontFamily,
+                fontSize: 48,
+              ),
+              style: NeumorphicStyle(color: Colors.white),
+            )),
+      ]),
       alignment: Alignment.center,
     ),
   );
