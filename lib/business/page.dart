@@ -89,6 +89,7 @@ class SinglePageController extends Controller {
 
   void setPlaying(index, newVal) {
     playing = List.generate(20, (i) => false);
+    restartableAll = false;
     playing[index] = newVal;
     autoExpand = index;
     update();
@@ -96,6 +97,8 @@ class SinglePageController extends Controller {
 
   void playAll() {
     playingAll = true;
+    playing = List.generate(20, (i) => false);
+    restartableAll = true;
     if (!pausedAll) {
       model.player.load(
         ConcatenatingAudioSource(
@@ -113,6 +116,8 @@ class SinglePageController extends Controller {
 
   void pauseAll() {
     playingAll = false;
+    restartableAll = true;
+    playing = List.generate(20, (i) => false);
     model.player.pause();
     pausedAll = true;
     update();

@@ -72,7 +72,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Sarvakäryeshu Sarvadä'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/anaamna.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/vakratundamahakaya.m4a',
   },
   '2.2': {
     SongInfo.name: 'Daily Slokhams',
@@ -87,7 +87,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
           'Sarva Vighno Pashantaye'
     ],
     SongInfo.music:
-        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/vakratundamahakaya.m4a',
+        'https://balvihar.s3-us-west-1.amazonaws.com/assembly/shuklambharadaram.m4a',
   },
   '2.3': {
     SongInfo.name: 'Daily Slokhams',
@@ -255,7 +255,7 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.music:
         'https://balvihar.s3-us-west-1.amazonaws.com/assembly/asatoma.m4a',
   },
-  /*
+  /* Sample:
   'key2': {
     SongInfo.name: '',
     SongInfo.author: '',

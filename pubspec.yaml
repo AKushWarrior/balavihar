@@ -1,7 +1,7 @@
 name: peninsulabalvihar
-description: An app containing the Peninsula Balavihar prayers, shlokams, & songs.
+description: An app containing the Peninsula Balvihar prayers, shlokams, & songs.
 
-version: 1.0.0+1
+version: 0.1.1
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -16,8 +16,14 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.8.0"
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/BVLogo.png"
 
 flutter:
   uses-material-design: true

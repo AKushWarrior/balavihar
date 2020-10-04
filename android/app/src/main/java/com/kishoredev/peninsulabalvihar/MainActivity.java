@@ -1,4 +1,4 @@
-package com.kishoredev.peninsulabalavihar;
+package com.kishoredev.peninsulabalvihar;
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity;
