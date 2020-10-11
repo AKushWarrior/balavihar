@@ -1,6 +1,6 @@
 import 'setup.dart';
 
-Map<String, Map<SongInfo, dynamic>> songData = {
+const Map<String, Map<SongInfo, dynamic>> songData = {
   '1.1': {
     SongInfo.name: 'Setting Intentions',
     SongInfo.author: 'Taittiriya Upanishad – Shiksha Vall',

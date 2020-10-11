@@ -57,41 +57,6 @@ abstract class Unit<T> {
   }
 }
 
-class SubUnit {
-  String lyric;
-  String music;
-  String key;
-  Model grandparent;
-
-  SubUnit(this.key, this.lyric, this.music, this.grandparent);
-
-  @override
-  String toString() => lyric.toString();
-
-  Future<void> play() async {
-    if (!(grandparent.player.icyMetadata.info.url == music)) {
-      await grandparent.player.setUrl(music);
-    }
-
-    grandparent.player.play();
-  }
-
-  Future<void> restart() async {
-    if (!(grandparent.player.icyMetadata.info.url == music)) {
-      await grandparent.player.setUrl(music);
-    }
-
-    await grandparent.player.seek(Duration(microseconds: 1));
-    grandparent.player.play();
-  }
-
-  Future<void> pause() async {
-    if ((grandparent.player.icyMetadata.info.url == music)) {
-      await grandparent.player.pause();
-    }
-  }
-}
-
 abstract class Controller extends GetController {
   List _keys = ['Loading...'];
 

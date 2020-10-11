@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:peninsulabalvihar/business/page.dart';
 
 import 'data/setup.dart';
 import 'data/shlokams.dart' as data;
@@ -14,9 +15,18 @@ class MultiPageModel extends Model {
     var song = data.songData[key];
     var lyrics = song[SongInfo.lyrics];
     var subunits = List.generate(
-        lyrics.length,
-        (i) => SubUnit('$key.${i + 1}', lyrics[i][SubSongInfo.lyric],
-            lyrics[i][SubSongInfo.music], this));
+      lyrics.length,
+      (i) => SinglePageUnit(
+          '$key.${i + 1}',
+          'Verse ${i + 1}',
+          lyrics[SubSongInfo.music],
+          null,
+          lyrics[SubSongInfo.lyric],
+          null,
+          null,
+          null,
+          this),
+    );
     return MultiPageUnit(
       key,
       song[SongInfo.name],
@@ -31,9 +41,17 @@ class MultiPageModel extends Model {
   }
 }
 
-class MultiPageUnit extends Unit<SubUnit> {
-  MultiPageUnit(String key, String name, String musicUrl, String imageUrl,
-      List<SubUnit> lyrics, String desc, String author, String date, Model model)
+class MultiPageUnit extends Unit<SinglePageUnit> {
+  MultiPageUnit(
+      String key,
+      String name,
+      String musicUrl,
+      String imageUrl,
+      List<SinglePageUnit> lyrics,
+      String desc,
+      String author,
+      String date,
+      Model model)
       : super(key, name, musicUrl, imageUrl, lyrics, desc, author, date, model);
 }
 
