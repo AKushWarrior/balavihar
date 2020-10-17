@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:peninsulabalvihar/business/page.dart';
+import 'dart:io' show Platform;
 
 Widget bottomBarBuilder(SinglePageController controller) {
   return Container(
@@ -16,7 +17,7 @@ Widget bottomBarBuilder(SinglePageController controller) {
           thickness: 1,
         ),
         Container(
-          margin: EdgeInsets.all(Get.height * 0.03),
+          margin: EdgeInsets.fromLTRB(0, (Get.height * 0.12-80)/3 + iosAdj, 0, zeroIfNegative((Get.height * 0.12-80)/3 - iosAdj)),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -29,6 +30,8 @@ Widget bottomBarBuilder(SinglePageController controller) {
                       ? null
                       : 0,
                 ),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                margin: EdgeInsets.zero,
                 child: Text(
                   controller.playingAll ? 'Pause All' : 'Play All',
                   style: TextStyle(
@@ -52,6 +55,8 @@ Widget bottomBarBuilder(SinglePageController controller) {
                   color: Colors.white,
                   depth: controller.restartableAll ? null : 0,
                 ),
+                padding:  EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                margin: EdgeInsets.zero,
                 child: Text(
                   'Restart All',
                   style: TextStyle(
@@ -72,3 +77,6 @@ Widget bottomBarBuilder(SinglePageController controller) {
     ),
   );
 }
+
+double get iosAdj => Platform.isIOS ? 10 : 0;
+double zeroIfNegative(double base) => base < 0 ? 0 : base;
