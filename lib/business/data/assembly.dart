@@ -51,10 +51,10 @@ const Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'To Trust in God',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Yadaa yadaa hi dharmasya, glaanir bhavati bhaarata',
-          'Abhyuthaanam adharmasya tadaatmaanam srujaamyaham',
-          'Paritranaaya saadhunaam vinaashaaya chadushcritaam',
-          'Dharmasanstha panaarthaaya sambhavaami yuge yuge'
+      'Yadaa yadaa hi dharmasya', 'Glaanir bhavati bhaarata',
+          'Abhyuthaanam adharmasya', 'Tadaatmaanam srujaamyaham',
+          'Paritranaaya saadhunaam', 'Vinaashaaya chadushcritaam',
+          'Dharmasanstha panaarthaaya', 'Sambhavaami yuge yuge'
     ],
     SongInfo.music:
         'https://balvihar.s3-us-west-1.amazonaws.com/assembly/yadhayadha.m4a',
@@ -96,7 +96,7 @@ const Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: 'Guru Vandanam',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      'Gurur Brahma, Gurur Vishnu,'
+      'Gurur Brahma, Gurur Vishnu',
           'Gurur Devo Maheshwara',
           'Guru Sakshat Parabrahmah',
           'Tasmai Shree Guru Veh Namah'

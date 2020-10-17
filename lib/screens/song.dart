@@ -5,7 +5,7 @@ import '../business/general.dart';
 import '../business/multipage.dart';
 
 class SongPage extends StatelessWidget {
-  String type;
+  final String type;
 
   SongPage(this.type);
 

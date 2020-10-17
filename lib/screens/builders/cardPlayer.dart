@@ -31,7 +31,7 @@ Container cardBuilder(
             borderRadius: BorderRadius.all(Radius.circular(1000))),
         child: ExpansionTile(
           tilePadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 7.5),
-          initiallyExpanded: false,
+          initiallyExpanded: controller.expanded[index],
           leading: controller.expanded[index]
               ? Icon(Icons.arrow_drop_down)
               : Icon(Icons.arrow_right),
