@@ -6,17 +6,17 @@ import 'package:peninsulabalvihar/business/page.dart';
 
 Widget bottomBarBuilder(SinglePageController controller) {
   return Container(
-    height: Get.height * 0.15,
+    height: Get.height * 0.13,
     alignment: Alignment.center,
     child: BottomAppBar(
-      child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
         Divider(
           color: Colors.black,
           height: 1,
           thickness: 1,
         ),
         Container(
-          margin: EdgeInsets.all(10.0),
+          margin: EdgeInsets.all(Get.height * 0.03),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
