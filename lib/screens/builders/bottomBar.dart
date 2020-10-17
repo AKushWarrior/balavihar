@@ -17,7 +17,7 @@ Widget bottomBarBuilder(SinglePageController controller) {
           thickness: 1,
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(0, (Get.height * 0.12-80)/3 + iosAdj, 0, zeroIfNegative((Get.height * 0.12-80)/3 - iosAdj)),
+          margin: EdgeInsets.fromLTRB(0, (Get.height * 0.12-40-iosAdj*4)/3 + iosAdj, 0, zeroIfNegative((Get.height * 0.12-40-iosAdj*4)/3 - iosAdj)),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
