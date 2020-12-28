@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:peninsulabalvihar/business/page.dart';
 
-Container cardBuilder(
+Widget cardBuilder(
     [String title,
     String subtitle,
     List<String> lyrics,
@@ -20,9 +20,9 @@ Container cardBuilder(
         padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
         child: Text(txt, style: TextStyle(color: Colors.black))));
   }
-  return Container(
-    margin: EdgeInsets.all(10),
-    child: Neumorphic(
+  return Neumorphic(
+      boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
+      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       style: NeumorphicStyle(
         color: Colors.white,
       ),
@@ -30,9 +30,10 @@ Container cardBuilder(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(1000))),
         child: ExpansionTile(
+          maintainState: true,
           tilePadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 7.5),
-          initiallyExpanded: controller.expanded[index],
-          leading: controller.expanded[index]
+          initiallyExpanded: controller.isExpanded(index),
+          leading: controller.isExpanded(index)
               ? Icon(Icons.arrow_drop_down)
               : Icon(Icons.arrow_right),
           trailing: Container(
@@ -47,6 +48,7 @@ Container cardBuilder(
                       : () {
                           unit.play();
                           controller.setPlaying(index, true);
+                          controller.setExpanded(index, true);
                         },
                   disabledColor: Colors.grey[300],
                 ),
@@ -79,6 +81,5 @@ Container cardBuilder(
           children: childrenList,
         ),
       ),
-    ),
   );
 }

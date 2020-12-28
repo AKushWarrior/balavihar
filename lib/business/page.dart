@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -43,6 +42,7 @@ class SinglePageController extends Controller {
   bool playingAll;
   bool pausedAll;
   bool restartableAll;
+  Timer _timer;
 
   StreamSubscription streamSub;
 
@@ -68,7 +68,7 @@ class SinglePageController extends Controller {
         update();
       }
       if (event.currentIndex != null && event.currentIndex != this.autoExpand) {
-        autoExpand = event.currentIndex;
+        expanded[event.currentIndex] = true;
         update();
       }
     });
@@ -80,6 +80,11 @@ class SinglePageController extends Controller {
     streamSub.cancel();
     _model.player.dispose();
     super.onClose();
+  }
+
+  bool isExpanded(int index) {
+    _timer = Timer(Duration(milliseconds: 50), update);
+    return expanded[index];
   }
 
   void setExpanded(index, newVal) {

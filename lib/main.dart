@@ -26,9 +26,8 @@ class BalviharApp extends StatelessWidget {
       getPages: [
         GetPage(name: "/", page: () => HomePage()),
         GetPage(name: "/assembly", page: () => AssemblyPage()),
-        GetPage(name: "/bhajans", page: () => SongPage('Bhajans')),
-        GetPage(name: "/shlokams", page: () => SongPage('Shlokams')),
-        GetPage(name: "/patriotic", page: () => SongPage('Patriotic')),
+        GetPage(name: "/bhajans", page: () => SongPage(SongType.bhajans)),
+        GetPage(name: "/shlokams", page: () => SongPage(SongType.shlokams)),
         GetPage(name: "/aboutus", page: () => AboutPage()),
       ],
     );

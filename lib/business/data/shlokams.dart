@@ -8,14 +8,8 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: '',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      {
-        SubSongInfo.lyric: '',
-        SubSongInfo.music: '',
-      },
-      {
-        SubSongInfo.lyric: '',
-        SubSongInfo.music: '',
-      }
+      '',
+      ''
     ],
     SongInfo.music: '',
   },
@@ -26,14 +20,8 @@ Map<String, Map<SongInfo, dynamic>> songData = {
     SongInfo.desc: '',
     SongInfo.image: '',
     SongInfo.lyrics: [
-      {
-        SubSongInfo.lyric: '',
-        SubSongInfo.music: '',
-      },
-      {
-        SubSongInfo.lyric: '',
-        SubSongInfo.music: '',
-      }
+      '',
+      ''
     ],
     SongInfo.music: '',
   },

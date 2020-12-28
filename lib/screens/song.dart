@@ -3,15 +3,26 @@ import 'package:get/get.dart';
 
 import '../business/general.dart';
 import '../business/multipage.dart';
+import 'builders/songs/songPage.dart';
 
 class SongPage extends StatelessWidget {
-  final String type;
+  final SongType type;
 
   SongPage(this.type);
 
   Widget build(context) {
-    return GetBuilder<Controller>(init: null, builder: (Controller val) {
-
-    });
+    MultiPageController control =
+        type == SongType.bhajans ? BhajanController() : ShlokamController();
+    return Scaffold(
+      backgroundColor: Colors.red[700],
+        body: GetBuilder<Controller>(
+            init: control,
+            builder: (Controller val) {
+              if (type == SongType.bhajans)
+                return ListView(children: songParent('Bhajans', val));
+              return null;
+            }));
   }
 }
+
+enum SongType { bhajans, shlokams }

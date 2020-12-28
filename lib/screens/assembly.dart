@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:peninsulabalvihar/screens/builders/bottomBar.dart';
+import 'package:peninsulabalvihar/screens/builders/assembly/bottomBar.dart';
 
 import '../business/page.dart';
-import 'builders/columnPlayers.dart';
+import 'builders/assembly/columnPlayers.dart';
 import 'package:peninsulabalvihar/business/data/assembly.dart' as data;
 
 class AssemblyPage extends StatelessWidget {
