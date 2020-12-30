@@ -14,12 +14,12 @@ class AssemblyPage extends StatelessWidget {
       body: GetBuilder<SinglePageController>(
         init: controller,
         builder: (SinglePageController val) {
-          return Container(
+          return Theme(data: Get.theme.copyWith(accentColor: Colors.orange[800]),child: Container(
             color: Colors.orange[800],
             child: ListView(
               children: columnCards('Assembly', val),
             ),
-          );
+          ),);
         },
       ),
       bottomNavigationBar: GetBuilder(init: controller, builder: (val) => bottomBarBuilder(val)),

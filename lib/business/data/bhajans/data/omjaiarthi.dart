@@ -17,37 +17,37 @@ const omjaiarthi = MapEntry(
             'Athithi devO bhava'
         ],
         [
-          'Maatru devO bhava',
+          'Testing the prayer',
           'Pitru devO bhava',
           'Achaarya devO bhava',
           'Athithi devO bhava'
         ],
         [
-          'Maatru devO bhava',
+          'Number 3',
           'Pitru devO bhava',
           'Achaarya devO bhava',
           'Athithi devO bhava'
         ],
         [
-          'Maatru devO bhava',
+          'Other words go here',
           'Pitru devO bhava',
           'Achaarya devO bhava',
           'Athithi devO bhava'
         ],
         [
-          'Maatru devO bhava',
+          'Blah Blah Blah',
           'Pitru devO bhava',
           'Achaarya devO bhava',
           'Athithi devO bhava'
         ],
         [
-          'Maatru devO bhava',
+          'Gotta test the pages',
           'Pitru devO bhava',
           'Achaarya devO bhava',
           'Athithi devO bhava'
         ],
         [
-          'Maatru devO bhava',
+          'Etc yk what i mean',
           'Pitru devO bhava',
           'Achaarya devO bhava',
           'Athithi devO bhava'

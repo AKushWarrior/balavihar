@@ -37,7 +37,7 @@ class SinglePageController extends Controller {
   final Model _model = SinglePageModel();
   List<bool> expanded;
   List<bool> playing;
-  int autoExpand;
+  int highlighted;
 
   bool playingAll;
   bool pausedAll;
@@ -64,11 +64,7 @@ class SinglePageController extends Controller {
         playingAll = false;
         expanded = List.generate(20, (i) => false);
         playing = List.generate(20, (i) => false);
-        autoExpand = null;
-        update();
-      }
-      if (event.currentIndex != null && event.currentIndex != this.autoExpand) {
-        expanded[event.currentIndex] = true;
+        highlighted = null;
         update();
       }
     });
@@ -82,11 +78,6 @@ class SinglePageController extends Controller {
     super.onClose();
   }
 
-  bool isExpanded(int index) {
-    _timer = Timer(Duration(milliseconds: 50), update);
-    return expanded[index];
-  }
-
   void setExpanded(index, newVal) {
     expanded[index] = newVal;
     update();
@@ -96,7 +87,6 @@ class SinglePageController extends Controller {
     playing = List.generate(20, (i) => false);
     restartableAll = false;
     playing[index] = newVal;
-    autoExpand = index;
     update();
   }
 
@@ -115,12 +105,17 @@ class SinglePageController extends Controller {
       );
     }
     pausedAll = false;
+    model.player.currentIndexStream.listen((event) {
+      highlighted = event;
+      update();
+    });
     model.player.play();
     update();
   }
 
   void pauseAll() {
     playingAll = false;
+    highlighted = null;
     restartableAll = true;
     playing = List.generate(20, (i) => false);
     model.player.pause();

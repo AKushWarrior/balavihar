@@ -116,8 +116,6 @@ class BhajanController extends MultiPageController {
 class SinglePageSongController extends Controller {
   MultiPageModel _model;
   MultiPageUnit base;
-  Mode _mode;
-  int pgIndex = 0;
   MultiPageController parent;
   bool _playing = false;
   int currentVerse = 1;
@@ -125,18 +123,10 @@ class SinglePageSongController extends Controller {
 
   bool get isPlaying => _playing;
 
-  Mode get mode => _mode;
-
-  void set mode(Mode newMode) {
-    _mode = newMode;
-    update();
-  }
-
   @override
   MultiPageModel get model => _model;
 
   SinglePageSongController(this._model, this.base, this.parent) {
-    mode = Mode.all;
     model.player.pause();
     model.player.setAudioSource(
       ConcatenatingAudioSource(
@@ -152,17 +142,6 @@ class SinglePageSongController extends Controller {
       if (event != null) currentVerse = event + 1;
       update();
     });
-  }
-
-  void flipPage(Direction direction) {
-    if (mode != Mode.verse)
-      throw StateError('All mode does not support pg. flips');
-    if (direction == Direction.forward) {
-      pgIndex++;
-    } else {
-      pgIndex--;
-    }
-    update();
   }
 
   void play() {
@@ -183,7 +162,3 @@ class SinglePageSongController extends Controller {
     sub.cancel();
   }
 }
-
-enum Direction { forward, backward }
-
-enum Mode { all, verse }
