@@ -105,12 +105,12 @@ class SinglePageController extends Controller {
     playing = List.generate(20, (i) => false);
     restartableAll = true;
     if (!pausedAll) {
-      model.player.load(
+      model.player.setAudioSource(
         ConcatenatingAudioSource(
             children: List.generate(
                 model.songData.length,
                     (int i) =>
-                    ProgressiveAudioSource(Uri.parse(
+                    AudioSource.uri(Uri.parse(
                         model.songData.values.toList()[i][SongInfo.music])))),
       );
     }

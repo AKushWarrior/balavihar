@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:peninsulabalvihar/business/page.dart';
@@ -22,18 +25,18 @@ class MultiPageModel extends Model {
   @override
   MultiPageUnit findByKey(String key) {
     var song = songData[key];
-    var lyrics = song[SongInfo.lyrics];
+    var verses = song[SongInfo.verses];
     var prefix = song[SongInfo.prefix];
     print(
         'https://balvihar.s3-us-west-1.amazonaws.com/bhajans/${prefix}/${prefix}_${1}.m4a');
     var subunits = List.generate(
-      lyrics.length,
+      verses.length,
       (i) => SinglePageUnit(
           '$key.${i + 1}',
           'Verse ${i + 1}',
           'https://balvihar.s3-us-west-1.amazonaws.com/bhajans/${prefix}/${prefix}_${i + 1}.m4a',
           null,
-          lyrics[i],
+          verses[i],
           null,
           null,
           null,
@@ -53,16 +56,18 @@ class MultiPageModel extends Model {
 }
 
 class MultiPageUnit extends Unit<SinglePageUnit> {
+  List<SinglePageUnit> get verses => super.lyrics;
+
   MultiPageUnit(
       String key,
       String name,
       String imageUrl,
-      List<SinglePageUnit> lyrics,
+      List<SinglePageUnit> verses,
       String desc,
       String author,
       String date,
       Model model)
-      : super(key, name, null, imageUrl, lyrics, desc, author, date, model);
+      : super(key, name, null, imageUrl, verses, desc, author, date, model);
 }
 
 abstract class MultiPageController extends Controller {
@@ -115,6 +120,8 @@ class SinglePageSongController extends Controller {
   int pgIndex = 0;
   MultiPageController parent;
   bool _playing = false;
+  int currentVerse = 1;
+  StreamSubscription sub;
 
   bool get isPlaying => _playing;
 
@@ -131,10 +138,20 @@ class SinglePageSongController extends Controller {
   SinglePageSongController(this._model, this.base, this.parent) {
     mode = Mode.all;
     model.player.pause();
-    model.player.load(ConcatenatingAudioSource(
-      children: List.generate(base.lyrics.length,
-              (int i) => ProgressiveAudioSource(Uri.parse(base.lyrics[i].music))),
-    ));
+    model.player.setAudioSource(
+      ConcatenatingAudioSource(
+        children: List.generate(
+          base.lyrics.length,
+          (int i) => AudioSource.uri(
+            Uri.parse(base.lyrics[i].music),
+          ),
+        ),
+      ),
+    );
+    sub = model.player.currentIndexStream.listen((int event) {
+      if (event != null) currentVerse = event + 1;
+      update();
+    });
   }
 
   void flipPage(Direction direction) {
@@ -163,6 +180,7 @@ class SinglePageSongController extends Controller {
   @override
   void onClose() {
     model.player.pause();
+    sub.cancel();
   }
 }
 

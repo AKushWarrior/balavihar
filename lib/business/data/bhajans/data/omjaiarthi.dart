@@ -9,7 +9,7 @@ const omjaiarthi = MapEntry(
       SongInfo.desc: '',
       SongInfo.image: '',
       SongInfo.prefix: 'om_jai_arthi',
-      SongInfo.lyrics: [
+      SongInfo.verses: [
         [
             'Maatru devO bhava',
             'Pitru devO bhava',

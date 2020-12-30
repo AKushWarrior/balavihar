@@ -10,7 +10,7 @@ dependencies:
   get: ^2.7.1
   flutter_neumorphic: ^2.2.0
   google_fonts: ^1.1.0
-  just_audio: ^0.4.4
+  just_audio: ^0.6.3
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0

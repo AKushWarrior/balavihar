@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:seekbar/seekbar.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -46,29 +47,24 @@ class _SeekingProgressBarState extends State<SeekingProgressBar> {
 
   @override
   Widget build(BuildContext context) {
-    return SeekBar(
-      barColor: Colors.grey,
-      progressColor: Colors.red[700],
-      thumbColor: Colors.black,
-      value: (timePassed?.inMilliseconds ?? 0) / totalTime.inMilliseconds,
-      secondValue: 0,
-      onStartTrackingTouch: () {
-        if (!_done) {
-          _progressTimer?.cancel();
-        }
-      },
-      onProgressChanged: (value) {
+    return NeumorphicSlider(
+      height: 10,
+      style: SliderStyle(
+        accent: Colors.red[800],
+        variant: Colors.red[800],
+      ),
+      value: ((timePassed?.inMilliseconds) ?? 0) / ((totalTime?.inMilliseconds) ?? 1),
+      min: 0,
+      max: 1,
+      onChanged: (value) {
         audioPlayer.seek(
           Duration(
-            milliseconds: (totalTime?.inMilliseconds ?? 0 * value).round(),
+            milliseconds: ((totalTime?.inMilliseconds ?? 0) * value).round(),
           ),
         );
       },
-      onStopTrackingTouch: () {
-        if (!_done) {
-          _resumeProgressTimer();
-        }
-      },
     );
   }
+
+
 }

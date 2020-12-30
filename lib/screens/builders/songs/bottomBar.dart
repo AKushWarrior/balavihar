@@ -14,11 +14,18 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
     padding: EdgeInsets.fromLTRB(10, 15, 10, 0),
     boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
     child: Container(
-        height: 110,
-        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+        height: 135,
+        child: Column(children: [
+          Text(
+            'Playing: Verse #${controller.currentVerse}',
+            style: TextStyle(
+                color: Colors.black,
+                fontFamily: GoogleFonts.oswald().fontFamily,
+                fontSize: 16),
+          ),
           SeekingProgressBar(controller.model.player),
           Container(
-            margin: EdgeInsets.symmetric(vertical: Get.height/75),
+            margin: EdgeInsets.symmetric(vertical: Get.height / 75),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -26,20 +33,40 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
                 NeumorphicButton(
                   style: NeumorphicStyle(
                     color: Colors.white,
+                    depth: controller.model.player.hasPrevious ? null : 0,
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                   margin: EdgeInsets.zero,
                   child: Text(
-                    controller.isPlaying ? 'Pause': 'Play',
+                    'Prev.',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
+                      fontFamily: GoogleFonts.oswald().fontFamily,
+                      color: controller.model.player.hasPrevious
+                          ? Colors.black
+                          : Colors.grey[300],
+                    ),
+                  ),
+                  onPressed: controller.model.player.hasPrevious
+                      ? controller.model.player.seekToPrevious
+                      : null,
+                ),
+                NeumorphicButton(
+                  style: NeumorphicStyle(
+                    color: Colors.white,
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  margin: EdgeInsets.zero,
+                  child: Text(
+                    controller.isPlaying ? 'Pause' : 'Play',
+                    style: TextStyle(
+                      fontSize: 18,
                       fontFamily: GoogleFonts.oswald().fontFamily,
                       color: Colors.black,
                     ),
                   ),
-                  onPressed: controller.isPlaying
-                      ? controller.pause
-                      : controller.play,
+                  onPressed:
+                      controller.isPlaying ? controller.pause : controller.play,
                 ),
                 NeumorphicButton(
                   // TODO: Fix restart logic
@@ -47,12 +74,12 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
                     color: Colors.white,
                     depth: controller.isPlaying ? null : 0,
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                   margin: EdgeInsets.zero,
                   child: Text(
                     'Restart',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontFamily: GoogleFonts.oswald().fontFamily,
                       color: controller.isPlaying
                           ? Colors.black
@@ -61,6 +88,27 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
                   ),
                   onPressed: controller.isPlaying
                       ? () => controller.model.player.seek(Duration.zero)
+                      : null,
+                ),
+                NeumorphicButton(
+                  style: NeumorphicStyle(
+                    color: Colors.white,
+                    depth: controller.model.player.hasNext ? null : 0,
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  margin: EdgeInsets.zero,
+                  child: Text(
+                    'Next',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: GoogleFonts.oswald().fontFamily,
+                      color: controller.model.player.hasNext
+                          ? Colors.black
+                          : Colors.grey[300],
+                    ),
+                  ),
+                  onPressed: controller.model.player.hasNext
+                      ? controller.model.player.seekToNext
                       : null,
                 ),
               ],
