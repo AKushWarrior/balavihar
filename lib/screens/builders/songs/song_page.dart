@@ -6,6 +6,7 @@ import 'package:peninsulabalvihar/screens/builders/songs/build_song.dart';
 import 'package:peninsulabalvihar/screens/builders/title.dart';
 
 import '../../../business/multipage.dart';
+import '../../utils.dart';
 
 List<Widget> songParent(String title, MultiPageController control) {
   final List<Widget> children = [];
@@ -16,7 +17,7 @@ List<Widget> songParent(String title, MultiPageController control) {
     var unit = control.model.findByKey(key);
     children.add(Neumorphic(
       boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
-      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: marginX),
       style: const NeumorphicStyle(
         color: Colors.white,
       ),

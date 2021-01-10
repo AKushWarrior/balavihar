@@ -3,11 +3,13 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:peninsulabalvihar/business/multipage.dart';
 
+import '../../utils.dart';
+
 Widget bodyBuilder(SinglePageSongController controller) {
   return Expanded(
       child: Neumorphic(
     style: const NeumorphicStyle(color: Colors.white),
-    margin: const EdgeInsets.symmetric(horizontal: 15.0),
+    margin: EdgeInsets.symmetric(horizontal: marginX),
     padding: const EdgeInsets.all(10.0),
     boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
     child: fullSongView(controller),

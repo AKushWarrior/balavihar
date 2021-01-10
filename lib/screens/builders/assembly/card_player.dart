@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:peninsulabalvihar/business/page.dart';
+import 'package:peninsulabalvihar/screens/utils.dart';
 
 Widget cardBuilder(
     [String title,
@@ -22,7 +23,7 @@ Widget cardBuilder(
   }
   return Neumorphic(
     boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
-    margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: marginX),
     style: const NeumorphicStyle(
       color: Colors.white,
     ),

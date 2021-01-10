@@ -7,10 +7,12 @@ import 'dart:io' show Platform;
 
 import 'package:peninsulabalvihar/screens/builders/songs/seekbar.dart';
 
+import '../../utils.dart';
+
 Widget bottomBarBuilder(SinglePageSongController controller) {
   return Neumorphic(
     style: const NeumorphicStyle(color: Colors.white),
-    margin: const EdgeInsets.all(15.0),
+    margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: marginX),
     padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
     boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
     child: Container(

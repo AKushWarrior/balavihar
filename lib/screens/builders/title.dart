@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:peninsulabalvihar/screens/utils.dart';
 
 Widget buildTitle(String title, double fontSize) {
   return Container(
     height: 100,
-    margin: const EdgeInsets.fromLTRB(5, 10, 10, 0),
+    margin: EdgeInsets.fromLTRB(marginX, 10, marginX, 0),
     alignment: Alignment.center,
     child: Row(children: [
       IconButton(
