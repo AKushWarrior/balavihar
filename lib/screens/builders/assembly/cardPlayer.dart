@@ -55,7 +55,8 @@ Widget cardBuilder(
                             controller.setPlaying(index, true);
                             controller.highlighted = index;
                           },
-                color: controller.playingAll ? Colors.grey[300] : Colors.grey[600],
+                color:
+                    controller.playingAll ? Colors.grey[300] : Colors.grey[600],
               ),
             ])),
         onExpansionChanged: (b) {

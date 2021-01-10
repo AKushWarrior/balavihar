@@ -15,13 +15,13 @@ class SinglePageModel extends Model {
     var song = songData[key];
     return SinglePageUnit(
       key,
-      song[SongInfo.name],
-      song[SongInfo.music],
-      song[SongInfo.image],
-      song[SongInfo.lyrics],
-      song[SongInfo.desc],
-      song[SongInfo.author],
-      song[SongInfo.date],
+      song[SongInfo.name] as String,
+      song[SongInfo.music] as String,
+      song[SongInfo.image] as String,
+      song[SongInfo.lyrics] as List<String>,
+      song[SongInfo.desc] as String,
+      song[SongInfo.author] as String,
+      song[SongInfo.date] as String,
       this,
     );
   }
@@ -34,7 +34,7 @@ class SinglePageUnit extends Unit<String> {
 }
 
 class SinglePageController extends Controller {
-  final Model _model = SinglePageModel();
+  final _model = SinglePageModel();
   List<bool> expanded;
   List<bool> playing;
   int highlighted;
@@ -78,12 +78,12 @@ class SinglePageController extends Controller {
     super.onClose();
   }
 
-  void setExpanded(index, newVal) {
+  void setExpanded(int index, bool newVal) {
     expanded[index] = newVal;
     update();
   }
 
-  void setPlaying(index, newVal) {
+  void setPlaying(int index, bool newVal) {
     playing = List.generate(20, (i) => false);
     restartableAll = false;
     playing[index] = newVal;
@@ -99,9 +99,8 @@ class SinglePageController extends Controller {
         ConcatenatingAudioSource(
             children: List.generate(
                 model.songData.length,
-                    (int i) =>
-                    AudioSource.uri(Uri.parse(
-                        model.songData.values.toList()[i][SongInfo.music])))),
+                (int i) => AudioSource.uri(Uri.parse(model.songData.values
+                    .toList()[i][SongInfo.music] as String)))),
       );
     }
     pausedAll = false;

@@ -8,9 +8,7 @@ abstract class Model {
   Map<String, Map<SongInfo, dynamic>> songData;
 
   List<String> get keys {
-    if (_keys == null) {
-      _keys = fetchKeys();
-    }
+    _keys ??= fetchKeys();
     return _keys;
   }
 
@@ -18,11 +16,12 @@ abstract class Model {
 
   Unit findByKey(String key);
 
-  List<Unit> fetchAll() => List.generate(keys.length, (i) => findByKey(keys[i]));
+  List<Unit> fetchAll() =>
+      List.generate(keys.length, (i) => findByKey(keys[i]));
 
   AudioPlayer player;
 
-  bool isPlaying (String music) => player.icyMetadata.info.url == music;
+  bool isPlaying(String music) => player.icyMetadata.info.url == music;
 }
 
 abstract class Unit<T> {
@@ -58,7 +57,7 @@ abstract class Unit<T> {
 }
 
 abstract class Controller extends GetController {
-  List _keys = ['Loading...'];
+  List _keys = <String>['Loading...'];
 
   List get keys => _keys;
   Model get model;

@@ -14,12 +14,15 @@ class SongPage extends StatelessWidget {
     MultiPageController control =
         type == SongType.bhajans ? BhajanController() : ShlokamController();
     return Scaffold(
-      backgroundColor: Colors.red[700],
+        backgroundColor: Colors.red[700],
         body: GetBuilder<Controller>(
             init: control,
             builder: (Controller val) {
-              if (type == SongType.bhajans)
-                return ListView(children: songParent('Bhajans', val));
+              if (type == SongType.bhajans) {
+                return ListView(
+                    children:
+                        songParent('Bhajans', val as MultiPageController));
+              }
               return null;
             }));
   }

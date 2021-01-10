@@ -6,7 +6,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:peninsulabalvihar/business/page.dart';
 
 import 'data/setup.dart';
-import 'data/shlokams.dart' as shlokams;
+import 'data/shlokams/shlokams.dart' as shlokams;
 import 'data/bhajans/bhajans.dart' as bhajans;
 import 'general.dart';
 
@@ -17,7 +17,8 @@ class MultiPageModel extends Model {
 
   @override
   Map<String, Map<SongInfo, dynamic>> get songData =>
-      type == 'Shlokams' ? shlokams.songData : bhajans.songData;
+      (type == 'Shlokams' ? shlokams.songData : bhajans.songData)
+          as Map<String, Map<SongInfo, dynamic>>;
 
   @override
   List<String> fetchKeys() => songData.keys.toList();
@@ -25,8 +26,8 @@ class MultiPageModel extends Model {
   @override
   MultiPageUnit findByKey(String key) {
     var song = songData[key];
-    var verses = song[SongInfo.verses];
-    var prefix = song[SongInfo.prefix];
+    List<List<String>> verses = song[SongInfo.verses] as List<List<String>>;
+    var prefix = song[SongInfo.prefix] as String;
     print(
         'https://balvihar.s3-us-west-1.amazonaws.com/bhajans/${prefix}/${prefix}_${1}.m4a');
     var subunits = List.generate(
@@ -44,12 +45,12 @@ class MultiPageModel extends Model {
     );
     return MultiPageUnit(
       key,
-      song[SongInfo.name],
-      song[SongInfo.image],
+      song[SongInfo.name] as String,
+      song[SongInfo.image] as String,
       subunits,
-      song[SongInfo.desc],
-      song[SongInfo.author],
-      song[SongInfo.date],
+      song[SongInfo.desc] as String,
+      song[SongInfo.author] as String,
+      song[SongInfo.date] as String,
       this,
     );
   }
@@ -80,7 +81,7 @@ abstract class MultiPageController extends Controller {
 
   void set selected(MultiPageUnit newUnit) {
     _current = newUnit;
-    model.player ??= new AudioPlayer();
+    model.player ??= AudioPlayer();
     update();
   }
 
@@ -88,7 +89,7 @@ abstract class MultiPageController extends Controller {
 
   @override
   void onInit() {
-    model.player ??= new AudioPlayer();
+    model.player ??= AudioPlayer();
     super.onInit();
   }
 

@@ -19,10 +19,10 @@ class HomePage extends StatelessWidget {
           ),
           Center(
               child: getNeuButton('Assembly', Colors.orange[800],
-                  () => Get.toNamed('/assembly'))),
+                  () => Get.toNamed<dynamic>('/assembly'))),
           Center(
               child: getNeuButton('Songs & Bhajans', Colors.red[700],
-                  () => Get.toNamed('/bhajans'))),
+                  () => Get.toNamed<dynamic>('/bhajans'))),
           Center(
               child: getNeuButton(
                   'Shlokams\nComing Soon', Colors.green[700], null)),

@@ -17,13 +17,15 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
         height: 145,
         child: Column(children: [
           Container(
-          child: Text(
-            'Playing: Verse #${controller.currentVerse}',
-            style: TextStyle(
-                color: Colors.black,
-                fontFamily: GoogleFonts.oswald().fontFamily,
-                fontSize: 16),
-          ), margin: EdgeInsets.symmetric(vertical: 10.0),),
+            child: Text(
+              'Playing: Verse #${controller.currentVerse}',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: GoogleFonts.oswald().fontFamily,
+                  fontSize: 16),
+            ),
+            margin: EdgeInsets.symmetric(vertical: 10.0),
+          ),
           SeekingProgressBar(controller.model.player),
           Container(
             margin: EdgeInsets.symmetric(vertical: Get.height / 75),

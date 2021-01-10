@@ -33,7 +33,7 @@ class _SeekingProgressBarState extends State<SeekingProgressBar> {
     super.initState();
   }
 
-  _resumeProgressTimer() {
+  void _resumeProgressTimer() {
     _progressTimer = Timer.periodic(const Duration(milliseconds: 100), (_) {
       setState(() {});
     });
@@ -53,7 +53,8 @@ class _SeekingProgressBarState extends State<SeekingProgressBar> {
         accent: Colors.red[800],
         variant: Colors.red[800],
       ),
-      value: ((timePassed?.inMilliseconds) ?? 0) / ((totalTime?.inMilliseconds) ?? 1),
+      value: ((timePassed?.inMilliseconds) ?? 0) /
+          ((totalTime?.inMilliseconds) ?? 1),
       min: 0,
       max: 1,
       onChanged: (value) {
@@ -65,6 +66,4 @@ class _SeekingProgressBarState extends State<SeekingProgressBar> {
       },
     );
   }
-
-
 }
