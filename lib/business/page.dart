@@ -8,11 +8,11 @@ import 'general.dart';
 
 class SinglePageModel extends Model {
   @override
-  List<String> fetchKeys() => songData.keys.toList();
+  List<String> fetchKeys() => (songData as Map<String, dynamic>).keys.toList();
 
   @override
   SinglePageUnit findByKey(String key) {
-    var song = songData[key];
+    dynamic song = (songData as Map<String, dynamic>)[key];
     return SinglePageUnit(
       key,
       song[SongInfo.name] as String,
@@ -98,7 +98,7 @@ class SinglePageController extends Controller {
       model.player.setAudioSource(
         ConcatenatingAudioSource(
             children: List.generate(
-                model.songData.length,
+                (model.songData as Map).length,
                 (int i) => AudioSource.uri(Uri.parse(model.songData.values
                     .toList()[i][SongInfo.music] as String)))),
       );

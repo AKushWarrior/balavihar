@@ -1,11 +1,9 @@
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 
-import 'data/setup.dart';
-
 abstract class Model {
   List<String> _keys;
-  Map<String, Map<SongInfo, dynamic>> songData;
+  dynamic songData;
 
   List<String> get keys {
     _keys ??= fetchKeys();
@@ -42,13 +40,13 @@ abstract class Unit<T> {
 
   Future<void> play() async {
     await parent.player.setUrl(music);
-    parent.player.play();
+    await parent.player.play();
   }
 
   Future<void> restart() async {
     await parent.player.setUrl(music);
-    await parent.player.seek(Duration(microseconds: 1));
-    parent.player.play();
+    await parent.player.seek(const Duration(microseconds: 1));
+    await parent.player.play();
   }
 
   Future<void> pause() async {

@@ -5,9 +5,10 @@ import '../business/general.dart';
 class SearchPage extends StatelessWidget {
   final List<Unit> bank;
 
-  SearchPage(this.bank);
+  const SearchPage(this.bank);
 
-  Widget build(context) {
+  @override
+  Widget build(BuildContext context) {
     return GetBuilder();
   }
 }

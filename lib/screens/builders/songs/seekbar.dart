@@ -2,13 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:seekbar/seekbar.dart';
 import 'package:just_audio/just_audio.dart';
 
 class SeekingProgressBar extends StatefulWidget {
   final AudioPlayer player;
 
-  SeekingProgressBar(this.player);
+  const SeekingProgressBar(this.player);
 
   @override
   _SeekingProgressBarState createState() {
@@ -18,8 +17,6 @@ class SeekingProgressBar extends StatefulWidget {
 
 class _SeekingProgressBarState extends State<SeekingProgressBar> {
   Timer _progressTimer;
-
-  bool _done = false;
 
   AudioPlayer get audioPlayer => this.widget.player;
 

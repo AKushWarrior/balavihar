@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:peninsulabalvihar/business/page.dart';
@@ -16,16 +15,15 @@ class MultiPageModel extends Model {
   MultiPageModel(this.type);
 
   @override
-  Map<String, Map<SongInfo, dynamic>> get songData =>
-      (type == 'Shlokams' ? shlokams.songData : bhajans.songData)
-          as Map<String, Map<SongInfo, dynamic>>;
+  List<Map<SongInfo, dynamic>> get songData =>
+      type == 'Shlokams' ? shlokams.songData : bhajans.songData;
 
   @override
-  List<String> fetchKeys() => songData.keys.toList();
+  List<String> fetchKeys() => List.generate(songData.length, (index) => '$index');
 
   @override
   MultiPageUnit findByKey(String key) {
-    var song = songData[key];
+    var song = songData[int.parse(key)];
     List<List<String>> verses = song[SongInfo.verses] as List<List<String>>;
     var prefix = song[SongInfo.prefix] as String;
     print(
@@ -89,7 +87,7 @@ abstract class MultiPageController extends Controller {
 
   @override
   void onInit() {
-    model.player ??= AudioPlayer();
+    model.player = AudioPlayer();
     super.onInit();
   }
 

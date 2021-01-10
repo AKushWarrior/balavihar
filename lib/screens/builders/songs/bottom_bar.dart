@@ -9,14 +9,15 @@ import 'package:peninsulabalvihar/screens/builders/songs/seekbar.dart';
 
 Widget bottomBarBuilder(SinglePageSongController controller) {
   return Neumorphic(
-    style: NeumorphicStyle(color: Colors.white),
-    margin: EdgeInsets.all(15.0),
-    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+    style: const NeumorphicStyle(color: Colors.white),
+    margin: const EdgeInsets.all(15.0),
+    padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
     boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
     child: Container(
         height: 145,
         child: Column(children: [
           Container(
+            margin: const EdgeInsets.symmetric(vertical: 10.0),
             child: Text(
               'Playing: Verse #${controller.currentVerse}',
               style: TextStyle(
@@ -24,7 +25,6 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
                   fontFamily: GoogleFonts.oswald().fontFamily,
                   fontSize: 16),
             ),
-            margin: EdgeInsets.symmetric(vertical: 10.0),
           ),
           SeekingProgressBar(controller.model.player),
           Container(
@@ -38,8 +38,11 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
                     color: Colors.white,
                     depth: controller.model.player.hasPrevious ? null : 0,
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                   margin: EdgeInsets.zero,
+                  onPressed: controller.model.player.hasPrevious
+                      ? controller.model.player.seekToPrevious
+                      : null,
                   child: Text(
                     'Prev.',
                     style: TextStyle(
@@ -50,16 +53,15 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
                           : Colors.grey[300],
                     ),
                   ),
-                  onPressed: controller.model.player.hasPrevious
-                      ? controller.model.player.seekToPrevious
-                      : null,
                 ),
                 NeumorphicButton(
-                  style: NeumorphicStyle(
+                  style: const NeumorphicStyle(
                     color: Colors.white,
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                   margin: EdgeInsets.zero,
+                  onPressed:
+                      controller.isPlaying ? controller.pause : controller.play,
                   child: Text(
                     controller.isPlaying ? 'Pause' : 'Play',
                     style: TextStyle(
@@ -68,16 +70,17 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
                       color: Colors.black,
                     ),
                   ),
-                  onPressed:
-                      controller.isPlaying ? controller.pause : controller.play,
                 ),
                 NeumorphicButton(
                   style: NeumorphicStyle(
                     color: Colors.white,
                     depth: controller.model.player.hasNext ? null : 0,
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                   margin: EdgeInsets.zero,
+                  onPressed: controller.model.player.hasNext
+                      ? controller.model.player.seekToNext
+                      : null,
                   child: Text(
                     'Next',
                     style: TextStyle(
@@ -88,9 +91,6 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
                           : Colors.grey[300],
                     ),
                   ),
-                  onPressed: controller.model.player.hasNext
-                      ? controller.model.player.seekToNext
-                      : null,
                 ),
               ],
             ),

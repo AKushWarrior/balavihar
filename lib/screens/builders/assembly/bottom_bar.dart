@@ -1,28 +1,22 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:peninsulabalvihar/business/page.dart';
-import 'dart:io' show Platform;
 
 Widget bottomBarBuilder(SinglePageController controller) {
   return Neumorphic(
+    margin: const EdgeInsets.all(20.0),
     style: NeumorphicStyle(color: Colors.white),
-    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
-    child: Container(
-      height: 100,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
+    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25.0)),
+      child:
           Container(
-            margin: EdgeInsets.symmetric(vertical: Get.height / 75),
+            height: 100,
+            alignment: Alignment.center,
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 NeumorphicButton(
@@ -33,8 +27,14 @@ Widget bottomBarBuilder(SinglePageController controller) {
                         ? null
                         : 0,
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                   margin: EdgeInsets.zero,
+                  onPressed: controller.playingAll ||
+                          !controller.playing.contains(true)
+                      ? (controller.playingAll
+                          ? controller.pauseAll
+                          : controller.playAll)
+                      : null,
                   child: Text(
                     controller.playingAll ? 'Pause All' : 'Play All',
                     style: TextStyle(
@@ -46,20 +46,16 @@ Widget bottomBarBuilder(SinglePageController controller) {
                           : Colors.grey[300],
                     ),
                   ),
-                  onPressed: controller.playingAll ||
-                          !controller.playing.contains(true)
-                      ? (controller.playingAll
-                          ? controller.pauseAll
-                          : controller.playAll)
-                      : null,
                 ),
                 NeumorphicButton(
                   style: NeumorphicStyle(
                     color: Colors.white,
                     depth: controller.restartableAll ? null : 0,
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                   margin: EdgeInsets.zero,
+                  onPressed:
+                      controller.restartableAll ? controller.restartAll : null,
                   child: Text(
                     'Restart All',
                     style: TextStyle(
@@ -70,18 +66,10 @@ Widget bottomBarBuilder(SinglePageController controller) {
                           : Colors.grey[300],
                     ),
                   ),
-                  onPressed:
-                      controller.restartableAll ? controller.restartAll : null,
                 ),
               ],
             ),
-          ),
-        ],
-      ),
     ),
   );
 }
 
-double get iosAdj => Platform.isIOS ? 10 : 0;
-
-double zeroIfNegative(double base) => base < 0 ? 0 : base;

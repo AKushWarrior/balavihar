@@ -4,14 +4,15 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
-  Widget build(context) {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image(
-            image: NetworkImage(
+            image: const NetworkImage(
                 'https://static.wixstatic.com/media/96ebd6_a922a9d47bc848429ba6b'
                 '549dc01aa6a~mv2.jpg/v1/fill/w_250,h_250,al_c,q_80,usm_0.66_'
                 '1.00_0.01/Logo_Suggestedchanges_JPG.webp'),

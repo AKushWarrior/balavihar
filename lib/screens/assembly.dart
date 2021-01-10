@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:peninsulabalvihar/screens/builders/assembly/bottomBar.dart';
+import 'package:peninsulabalvihar/business/data/assembly.dart' as data;
+import 'package:peninsulabalvihar/screens/builders/assembly/bottom_bar.dart';
 
 import '../business/page.dart';
-import 'builders/assembly/columnPlayers.dart';
-import 'package:peninsulabalvihar/business/data/assembly.dart' as data;
+import 'builders/assembly/column_players.dart';
 
 class AssemblyPage extends StatelessWidget {
-  Widget build(context) {
-    var controller = SinglePageController();
+  @override
+  Widget build(BuildContext context) {
+    final controller = SinglePageController();
     controller.model.songData = data.songData;
     return Scaffold(
+      backgroundColor: Colors.orange[800],
       body: GetBuilder<SinglePageController>(
         init: controller,
         builder: (SinglePageController val) {

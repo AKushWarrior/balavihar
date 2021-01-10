@@ -1,8 +1,6 @@
-import 'data/rename.dart';
 import '../setup.dart';
+import 'data/rename.dart';
 
-Map<String, Map<SongInfo, dynamic>> songData = Map.fromEntries(
-  [
-    omjaiarthi,
-  ],
-);
+const songData = <Map<SongInfo, dynamic>>[
+  omjaiarthi,
+];

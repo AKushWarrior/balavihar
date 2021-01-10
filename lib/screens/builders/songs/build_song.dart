@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:peninsulabalvihar/business/multipage.dart';
-import 'package:peninsulabalvihar/screens/builders/songs/bodyBuilder.dart';
+import 'package:peninsulabalvihar/screens/builders/songs/body_builder.dart';
 /**/
 import 'package:peninsulabalvihar/screens/builders/title.dart';
 
-import 'bottomBar.dart';
+import 'bottom_bar.dart';
 
 Widget childSongScaffold(MultiPageUnit unit, MultiPageController control) {
-  var childControl =
+  final childControl =
       SinglePageSongController(control.model, control.selected, control);
   return GetBuilder(
     init: childControl,
@@ -17,8 +17,8 @@ Widget childSongScaffold(MultiPageUnit unit, MultiPageController control) {
       body: Theme(
         data: Get.theme.copyWith(accentColor: Colors.red[700]),
         child: Container(
+          margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: _buildMain(unit, val),
-          margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
         ),
       ),
       backgroundColor: Colors.red[700],

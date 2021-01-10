@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'screens/assembly.dart';
-import 'screens/about.dart';
-import 'screens/song.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'screens/about.dart';
+import 'screens/assembly.dart';
 import 'screens/home.dart';
+import 'screens/song.dart';
 
 void main() => runApp(BalviharApp());
 

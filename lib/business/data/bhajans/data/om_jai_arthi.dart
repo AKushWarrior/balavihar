@@ -1,8 +1,8 @@
 import '../../setup.dart';
 
-const omjaiarthi = MapEntry('11', {
-  SongInfo.name: 'Arthi Song – Om Jai Jagadish Hare',
-  SongInfo.author: 'By Pandit Shardha Ram Phillauri (1837 – 1881)',
+const omjaiarthi = {
+  SongInfo.name: 'Om Jai Arthi',
+  SongInfo.author: 'Pandit Shardha Ram Phillauri (1837 – 1881)',
   SongInfo.date: 'Fall 2010',
   SongInfo.desc: '',
   SongInfo.image: '',
@@ -17,7 +17,7 @@ const omjaiarthi = MapEntry('11', {
       'Om jai Jagdish hare'
     ],
     [
-      'jo dhyãve phal pãve',
+      'Jo dhyãve phal pãve',
       'Dukh bin se man kã',
       'Swami dukh bin se man kã',
       'Sukh sampati ghar ãve',
@@ -88,4 +88,4 @@ const omjaiarthi = MapEntry('11', {
       'Om jai Jagdish hare'
     ]
   ],
-});
+};

@@ -14,34 +14,34 @@ Widget cardBuilder(
     subtitle = unit.desc;
     lyrics = unit.lyrics;
   }
-  List<Widget> childrenList = [];
-  for (var txt in lyrics) {
+  final List<Widget> childrenList = [];
+  for (final txt in lyrics) {
     childrenList.add(Padding(
-        padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-        child: Text(txt, style: TextStyle(color: Colors.black))));
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+        child: Text(txt, style: const TextStyle(color: Colors.black))));
   }
   return Neumorphic(
     boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
-    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-    style: NeumorphicStyle(
+    margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+    style: const NeumorphicStyle(
       color: Colors.white,
     ),
     child: Container(
       child: ExpansionTile(
         maintainState: false,
         key: PageStorageKey<String>('$index'),
-        tilePadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 7.5),
+        tilePadding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 7.5),
         initiallyExpanded: controller.expanded[index],
         leading: controller.expanded[index]
-            ? Icon(Icons.arrow_drop_down)
-            : Icon(Icons.arrow_right),
+            ? const Icon(Icons.arrow_drop_down)
+            : const Icon(Icons.arrow_right),
         trailing: Container(
             width: 90,
-            child: ButtonBar(children: [
+            child:
               IconButton(
                 icon: controller.playing[index]
-                    ? Icon(Icons.pause)
-                    : Icon(Icons.play_arrow),
+                    ? const Icon(Icons.pause)
+                    : const Icon(Icons.play_arrow),
                 onPressed: controller.playingAll
                     ? null
                     : controller.playing[index]
@@ -56,14 +56,15 @@ Widget cardBuilder(
                             controller.highlighted = index;
                           },
                 color:
-                    controller.playingAll ? Colors.grey[300] : Colors.grey[600],
+                    controller.playingAll ? Colors.grey[100] : Colors.grey[600],
               ),
-            ])),
+            ),
         onExpansionChanged: (b) {
-          if (b)
+          if (b) {
             controller.setExpanded(index, true);
-          else
+          } else {
             controller.setExpanded(index, false);
+          }
         },
         title: Text(
           title,

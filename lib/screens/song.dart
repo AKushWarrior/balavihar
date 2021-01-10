@@ -3,15 +3,16 @@ import 'package:get/get.dart';
 
 import '../business/general.dart';
 import '../business/multipage.dart';
-import 'builders/songs/songPage.dart';
+import 'builders/songs/song_page.dart';
 
 class SongPage extends StatelessWidget {
   final SongType type;
 
-  SongPage(this.type);
+  const SongPage(this.type);
 
-  Widget build(context) {
-    MultiPageController control =
+  @override
+  Widget build(BuildContext context) {
+    final MultiPageController control =
         type == SongType.bhajans ? BhajanController() : ShlokamController();
     return Scaffold(
         backgroundColor: Colors.red[700],
