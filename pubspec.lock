@@ -303,13 +303,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.25.0"
-  seekbar:
-    dependency: "direct main"
-    description:
-      name: seekbar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.2"
   sky_engine:
     dependency: transitive
     description: flutter

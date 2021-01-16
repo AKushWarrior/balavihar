@@ -1,10 +1,10 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:peninsulabalvihar/business/multipage.dart';
-import 'dart:io' show Platform;
-
 import 'package:peninsulabalvihar/screens/builders/songs/seekbar.dart';
 
 import '../../utils.dart';
@@ -16,7 +16,7 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
     padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
     boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
     child: Container(
-        height: 145,
+        height: 150,
         child: Column(children: [
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -40,7 +40,7 @@ Widget bottomBarBuilder(SinglePageSongController controller) {
                     color: Colors.white,
                     depth: controller.model.player.hasPrevious ? null : 0,
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                  padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 25),
                   margin: EdgeInsets.zero,
                   onPressed: controller.model.player.hasPrevious
                       ? controller.model.player.seekToPrevious

@@ -80,7 +80,7 @@ Widget getNeuButton(String text, Color color, void Function() cb) {
   );
 }
 
-double get paddingHeight => Get.height / 15;
+double get paddingHeight => Get.height / 17;
 
 double get doubleTextPaddingHeight => paddingHeight - Get.height / 60;
 
