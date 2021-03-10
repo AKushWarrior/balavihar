@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:get/get.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:peninsulabalvihar/business/page.dart';
 
@@ -76,26 +76,6 @@ abstract class MultiPageController extends Controller {
   MultiPageUnit _current;
 
   MultiPageUnit get selected => _current;
-
-  void set selected(MultiPageUnit newUnit) {
-    _current = newUnit;
-    model.player ??= AudioPlayer();
-    update();
-  }
-
-  static Controller get to => Get.find();
-
-  @override
-  void onInit() {
-    model.player = AudioPlayer();
-    super.onInit();
-  }
-
-  @override
-  void onClose() {
-    model.player?.dispose();
-    super.onClose();
-  }
 }
 
 class ShlokamController extends MultiPageController {
@@ -112,7 +92,7 @@ class BhajanController extends MultiPageController {
   MultiPageModel get model => _model;
 }
 
-class SinglePageSongController extends Controller {
+class SongController extends Controller {
   MultiPageModel _model;
   MultiPageUnit base;
   MultiPageController parent;
@@ -125,39 +105,74 @@ class SinglePageSongController extends Controller {
   @override
   MultiPageModel get model => _model;
 
-  SinglePageSongController(this._model, this.base, this.parent) {
-    model.player.pause();
-    model.player.setAudioSource(
+  SongController(this._model, this.base, this.parent);
+}
+
+class MultiPageNotifier extends StateNotifier<MultiPageController> {
+  MultiPageNotifier(MultiPageController control) : super(control) {
+    state = state..model.player = AudioPlayer();
+  }
+
+  void set selected(MultiPageUnit newUnit) {
+    state._current = newUnit;
+    state = state..model.player ??= AudioPlayer();
+  }
+
+  void onClose() {
+    state.model.player?.dispose();
+  }
+
+  MultiPageController get read => state;
+}
+
+class SongNotifier extends StateNotifier<SongController> {
+  SongNotifier(SongController control) : super(control) {
+    state.model.player.pause();
+    state = state..model.player.setAudioSource(
       ConcatenatingAudioSource(
         children: List.generate(
-          base.lyrics.length,
-          (int i) => AudioSource.uri(
-            Uri.parse(base.lyrics[i].music),
+          state.base.lyrics.length,
+              (int i) => AudioSource.uri(
+            Uri.parse(state.base.lyrics[i].music),
           ),
         ),
       ),
     );
-    sub = model.player.currentIndexStream.listen((int event) {
-      if (event != null) currentVerse = event + 1;
-      update();
+    state.sub = state.model.player.currentIndexStream.listen((int event) {
+      if (event != null) state = state..currentVerse = event + 1;
     });
   }
 
   void play() {
-    model.player.play();
-    _playing = true;
-    update();
+    state.model.player.play();
+    state = state.._playing = true;
   }
 
   void pause() {
-    model.player.pause();
-    _playing = false;
-    update();
+    state.model.player.pause();
+    state = state.._playing = false;
   }
 
-  @override
   void onClose() {
-    model.player.pause();
-    sub.cancel();
+    state.model.player.pause();
+    state = state..sub.cancel();
   }
+
+  SongController get read => state;
+}
+
+StateNotifierProvider<MultiPageNotifier> generateMultipageProvider(MultiPageController control) {
+  return StateNotifierProvider<MultiPageNotifier>((ref) {
+    var notifier = MultiPageNotifier(control);
+    ref.onDispose(() => notifier.onClose());
+    return notifier;
+  });
+}
+
+StateNotifierProvider<SongNotifier> generateSongProvider(SongController control) {
+  return StateNotifierProvider<SongNotifier>((ref) {
+    var notifier = SongNotifier(control);
+    ref.onDispose(() => notifier.onClose());
+    return notifier;
+  });
 }

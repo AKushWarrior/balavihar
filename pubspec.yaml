@@ -4,10 +4,12 @@ description: An app containing the Peninsula Balvihar prayers, shlokams, & songs
 version: 1.0.0+2
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.3.0 <3.0.0"
 
 dependencies:
-  get: ^2.7.1
+  flutter_hooks: any
+  hooks_riverpod: any
+  beamer: any
   flutter_neumorphic: ^2.2.0
   google_fonts: ^1.1.0
   just_audio: ^0.6.3
@@ -16,8 +18,8 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
-  flutter_launcher_icons: "^0.8.0"
-  extra_pedantic: 1.2.0
+  flutter_launcher_icons: any
+  pedantic: any
   flutter_test:
     sdk: flutter
 

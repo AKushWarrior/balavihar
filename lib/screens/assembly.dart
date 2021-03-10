@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:peninsulabalvihar/business/data/assembly.dart' as data;
 import 'package:peninsulabalvihar/screens/builders/assembly/bottom_bar.dart';
 
@@ -9,27 +8,19 @@ import 'builders/assembly/column_players.dart';
 class AssemblyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final controller = SinglePageController();
+    final controller = AssemblyController();
     controller.model.songData = data.songData;
+    var provider = generateAssemblyProvider(controller);
     return Scaffold(
       backgroundColor: Colors.orange[800],
-      body: GetBuilder<SinglePageController>(
-        init: controller,
-        builder: (SinglePageController val) {
-          return Theme(
-            data: Get.theme.copyWith(accentColor: Colors.orange[800]),
+      body: Theme(
+            data: Theme.of(context).copyWith(accentColor: Colors.orange[800]),
             child: Container(
               color: Colors.orange[800],
-              child: ListView(
-                children: columnCards('Assembly', val),
-              ),
+              child: AssemblyCardColumn(provider, 'Assembly'),
             ),
-          );
-        },
       ),
-      bottomNavigationBar: GetBuilder(
-          init: controller,
-          builder: (SinglePageController val) => bottomBarBuilder(val)),
+      bottomNavigationBar: AssemblyBottomBar(provider),
     );
   }
 }

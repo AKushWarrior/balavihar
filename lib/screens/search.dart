@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../business/general.dart';
 
 class SearchPage extends StatelessWidget {
@@ -9,6 +8,6 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder();
+    return Container();
   }
 }

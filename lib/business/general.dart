@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 
 abstract class Model {
@@ -54,21 +54,11 @@ abstract class Unit<T> {
   }
 }
 
-abstract class Controller extends GetController {
+abstract class Controller {
   List _keys = <String>['Loading...'];
 
   List get keys => _keys;
   Model get model;
-
-  @override
-  void onInit() {
-    _processKeys();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   void _processKeys() async {
     _keys = model.keys;

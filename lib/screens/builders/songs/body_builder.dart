@@ -3,20 +3,26 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:peninsulabalvihar/business/multipage.dart';
 
-import '../../utils.dart';
+import '../../../utils.dart';
 
-Widget bodyBuilder(SinglePageSongController controller) {
-  return Expanded(
-      child: Neumorphic(
-    style: const NeumorphicStyle(color: Colors.white),
-    margin: EdgeInsets.symmetric(horizontal: marginX),
-    padding: const EdgeInsets.all(10.0),
-    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
-    child: fullSongView(controller),
-  ));
+class SongBody extends StatelessWidget {
+  final SongController childControl;
+
+  SongBody(this.childControl);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        child: Neumorphic(
+          style: const NeumorphicStyle(color: Colors.white),
+          margin: EdgeInsets.symmetric(horizontal: Screen.marginX(context)),
+          padding: const EdgeInsets.all(10.0),
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
+          child: fullSongView(childControl),
+        ));
+  }
 }
-
-Widget fullSongView(SinglePageSongController control) {
+Widget fullSongView(SongController control) {
   return Column(
     children: [
       Container(
@@ -38,9 +44,9 @@ Widget fullSongView(SinglePageSongController control) {
           child: ListView.builder(
             shrinkWrap: true,
             padding: const EdgeInsets.only(top: 5.0),
-            itemBuilder: (BuildContext ctxt, int i) {
+            itemBuilder: (_, int i) {
               return Text(
-                "\n" + control.base.verses[i].lyrics.join("\n") + "\n",
+                '\n' + control.base.verses[i].lyrics.join('\n') + '\n',
                 style: const TextStyle(color: Colors.black, fontSize: 16),
                 textAlign: TextAlign.center,
               );
