@@ -1,4 +1,3 @@
-import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../utils.dart';
@@ -20,10 +19,10 @@ class HomePage extends StatelessWidget {
           ),
           Center(
               child: NeuButton('Assembly', Colors.orange[800],
-                  () => Beamer.of(context).beamToNamed('/assembly'))),
+                  () => Nav.router.navigateTo(context, '/assembly'))),
           Center(
               child: NeuButton('Songs & Bhajans', Colors.red[700],
-                  () => Beamer.of(context).beamToNamed('/bhajans'))),
+                  () => Nav.router.navigateTo(context, '/bhajans'))),
           Center(
               child: NeuButton(
                   'Shlokams\nComing Soon', Colors.green[700], null)),
@@ -70,8 +69,8 @@ class NeuButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             // TODO: Normalize vertical padding when Songs are ready
             vertical: text != 'Shlokams\nComing Soon'
-                ? Screen.height(context) / 25
-                : Screen.height(context) / 25 - Screen.height(context) / 95,
+                ? Screen.height(context) / 17
+                : Screen.height(context) / 17 - 16.75,
             horizontal: Screen.marginX(context),
           ),
           width: Screen.width(context) / 3 * 2.5,

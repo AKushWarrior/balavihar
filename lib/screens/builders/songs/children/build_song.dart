@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:peninsulabalvihar/business/multipage.dart';
 import 'package:peninsulabalvihar/screens/builders/songs/children/body_builder.dart';
@@ -16,7 +17,7 @@ class ChildSongScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final childControl = SongController(control.model, control.selected, control);
     final childProvider = generateSongProvider(childControl);
-    return Scaffold(
+    return ZoomIn(child: Scaffold(
       body: Theme(
         data: Theme.of(context).copyWith(accentColor: Colors.red[700]),
         child: Container(
@@ -31,6 +32,6 @@ class ChildSongScaffold extends StatelessWidget {
       ),
       backgroundColor: Colors.red[700],
       bottomNavigationBar: SongBottomBar(childProvider),
-    );
+    ));
   }
 }

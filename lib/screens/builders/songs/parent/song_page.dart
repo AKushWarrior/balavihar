@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,15 +43,11 @@ class SongParent extends HookWidget {
           ),
           onTap: () {
             control.selected = control.read.model.findByKey(key);
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) {
-                return ChildSongScaffold(unit, control.read);
-              }
-            ));
+            Nav.router.navigateTo(context, '/child', routeSettings: RouteSettings(arguments: [unit, control.read]));
           },
         ),
       ));
     }
-    return ListView(children: children);
+    return ZoomIn(child: ListView(children: children));
   }
 }

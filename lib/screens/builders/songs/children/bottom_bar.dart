@@ -15,7 +15,7 @@ class SongBottomBar extends HookWidget {
   @override
   Widget build(BuildContext context) {
     var notifier = useProvider(provider);
-    var controller = notifier.read;
+    var controller = useProvider(provider.state);
     return Card(
       color: Colors.white,
       margin: EdgeInsets.symmetric(
@@ -23,36 +23,24 @@ class SongBottomBar extends HookWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Screen.borderRadius)),
       child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          height: 175,
-          child: Column(children: [
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          height: 160,
+          child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 10.0),
-              child: Text(
-                'Playing: Verse #${controller.currentVerse}',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: GoogleFonts.oswald().fontFamily,
-                    fontSize: 16),
-              ),
-            ),
-            SeekingProgressBar(controller.model.player),
+                child: SeekingProgressBar(controller.model.player, controller)),
             Container(
-              margin:
-                  EdgeInsets.symmetric(vertical: Screen.height(context) / 75),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   OutlinedButton(
                     onPressed: controller.model.player.hasPrevious
                         ? controller.model.player.seekToPrevious
                         : null,
                     child: Container(
-                      color: Colors.white,
                       //depth: controller.model.player.hasPrevious ? null : 0,
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 11, horizontal: 25),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 20),
                       child: Text(
                         'Prev.',
                         style: TextStyle(
@@ -69,9 +57,8 @@ class SongBottomBar extends HookWidget {
                     onPressed:
                         controller.isPlaying ? notifier.pause : notifier.play,
                     child: Container(
-                      color: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 25),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 20),
                       child: Text(
                         controller.isPlaying ? 'Pause' : 'Play',
                         style: TextStyle(
@@ -87,9 +74,8 @@ class SongBottomBar extends HookWidget {
                         ? controller.model.player.seekToNext
                         : null,
                     child: Container(
-                      color: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 25),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 20),
                       child: Text(
                         'Next',
                         style: TextStyle(

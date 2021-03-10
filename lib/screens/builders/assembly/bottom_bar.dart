@@ -55,6 +55,7 @@ class AssemblyBottomBar extends HookWidget {
                 ),
                 OutlinedButton(
                   onPressed: controller.restartableAll ? notifier.restartAll : null,
+                  style: OutlinedButton.styleFrom(primary: Colors.orange),
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     child: Text(

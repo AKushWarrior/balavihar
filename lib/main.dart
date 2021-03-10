@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:beamer/beamer.dart';
+import 'package:fluro/fluro.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:peninsulabalvihar/utils.dart';
 
 import 'screens/assembly.dart';
 import 'screens/home.dart';
@@ -12,7 +13,8 @@ void main() => runApp(ProviderScope(child: BalviharApp()));
 class BalviharApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    Nav.init();
+    return MaterialApp(
       title: 'Balvihar Demo',
       theme: ThemeData.light().copyWith(
         textTheme: GoogleFonts.oswaldTextTheme().copyWith(
@@ -22,57 +24,9 @@ class BalviharApp extends StatelessWidget {
           subtitle2: GoogleFonts.merriweather(),
         ),
         backgroundColor: Colors.white,
+        splashColor: Colors.transparent,
       ),
-      routerDelegate: BeamerRouterDelegate(
-        beamLocations: [
-          HomeLocation(),
-          AssemblyLocation(),
-          BhajanLocation(),
-          ShlokamLocation()
-        ],
-      ),
-      routeInformationParser: BeamerRouteInformationParser(),
+      onGenerateRoute: Nav.router.generator,
     );
   }
 }
-
-class HomeLocation extends BeamLocation {
-
-  @override
-  List<BeamPage> pagesBuilder(BuildContext context) {
-    return [BeamPage(key: ValueKey('home'), child: HomePage())];
-  }
-
-  @override
-  List<String> get pathBlueprints => ['/'];
-}
-
-class AssemblyLocation extends BeamLocation {
-  @override
-  List<BeamPage> pagesBuilder(BuildContext context) {
-    return [...HomeLocation().pagesBuilder(context), BeamPage(key: ValueKey('assembly'), child: AssemblyPage())];
-  }
-
-  @override
-  List<String> get pathBlueprints => ['/assembly'];
-}
-
-class BhajanLocation extends BeamLocation {
-  @override
-  List<BeamPage> pagesBuilder(BuildContext context) {
-    return [...HomeLocation().pagesBuilder(context), BeamPage(key: ValueKey('bhajans'), child: SongPage(SongType.bhajans))];
-  }
-
-  @override
-  List<String> get pathBlueprints => ['/bhajans'];
-}
-
-class ShlokamLocation extends BeamLocation {
-  @override
-  List<BeamPage> pagesBuilder(BuildContext context) {
-    return [...HomeLocation().pagesBuilder(context), BeamPage(key: ValueKey('shlokams'), child: SongPage(SongType.shlokams))];
-  }
-  @override
-  List<String> get pathBlueprints => ['/shlokams'];
-}
-

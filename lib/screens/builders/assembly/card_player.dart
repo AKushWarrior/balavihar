@@ -29,6 +29,7 @@ class AssemblyCard extends HookWidget {
       color: Colors.white,
       child: Container(
         child: ExpansionTile(
+          backgroundColor: Colors.transparent,
           maintainState: false,
           key: PageStorageKey<String>('$index'),
           tilePadding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 7.5),

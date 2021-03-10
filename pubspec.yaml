@@ -9,10 +9,11 @@ environment:
 dependencies:
   flutter_hooks: ^0.16.0
   hooks_riverpod: ^0.13.1
-  beamer: ^1.0.0-nullsafety.1
+  fluro: ^2.0.3
   google_fonts: ^2.0.0
   just_audio: ^0.7.0
-  syncfusion_flutter_sliders: ^18.4.47-beta
+  animate_do: ^2.0.0
+  flutter_fluid_slider: ^1.0.3
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0

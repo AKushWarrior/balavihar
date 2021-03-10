@@ -1,7 +1,6 @@
-import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:peninsulabalvihar/utils.dart';
+import '../../utils.dart';
 
 class PageTitle extends StatelessWidget {
   final String title;
@@ -15,19 +14,22 @@ class PageTitle extends StatelessWidget {
       height: 100,
       margin: EdgeInsets.fromLTRB(Screen.marginX(context), 10, Screen.marginX(context), 0),
       alignment: Alignment.center,
-      child: Row(children: [
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
         IconButton(
+          splashColor: Colors.transparent,
+          hoverColor: Colors.transparent,
           icon: Icon(
             Icons.arrow_back_ios,
             size: 36,
             color: Colors.white,
             //color: Colors.white,
           ),
-          onPressed: () => Beamer.of(context).beamBack(),
+          onPressed: () => Nav.router.pop(context),
         ),
         Container(width: Screen.width(context) / 50),
         Container(
-            alignment: Alignment.center,
             child: Text(
               title,
               style: TextStyle(

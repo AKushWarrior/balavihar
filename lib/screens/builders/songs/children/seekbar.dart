@@ -1,13 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:syncfusion_flutter_sliders/sliders.dart';
+import '../../../../business/multipage.dart';
 
 class SeekingProgressBar extends StatefulWidget {
   final AudioPlayer player;
+  final SongController controller;
 
-  const SeekingProgressBar(this.player);
+  const SeekingProgressBar(this.player, this.controller);
 
   @override
   _SeekingProgressBarState createState() {
@@ -44,18 +47,52 @@ class _SeekingProgressBarState extends State<SeekingProgressBar> {
 
   @override
   Widget build(BuildContext context) {
-    return SfSlider(
-      value: ((timePassed?.inMilliseconds) ?? 0) /
-          ((totalTime?.inMilliseconds) ?? 1),
-      min: 0,
-      max: 1,
+    return FluidSlider(
+      start: Container(),
+      end: PlayingText(widget.controller),
+      min: 0.0,
+      max: totalTime?.inMilliseconds?.toDouble() ?? 1.0,
+      value: timePassed?.inMilliseconds?.toDouble() ?? 0.0,
+      thumbDiameter: 50.0,
+      sliderColor: Colors.grey[100],
+      valueTextStyle: TextStyle(fontSize: 12, color: Colors.black),
+      mapValueToString: (double value) {
+        var duration = Duration(milliseconds: value.round());
+        if (duration.inHours > 0) {
+          var minutes = '${duration.inMinutes%60}';
+          if (minutes.length == 1) {
+            minutes = '0' + minutes;
+          }
+          return '${duration.inHours}:$minutes';
+        } else {
+          var seconds = '${duration.inSeconds%60}';
+          if (seconds.length == 1) {
+            seconds = '0' + seconds;
+          }
+          return '${duration.inMinutes}:$seconds';
+        }
+      },
       onChanged: (value) {
         audioPlayer.seek(
           Duration(
-            milliseconds: ((totalTime?.inMilliseconds ?? 0) * value).round(),
+            milliseconds: (value).round(),
           ),
         );
       },
     );
+  }
+}
+
+class PlayingText extends StatelessWidget {
+  final SongController controller;
+
+  PlayingText(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('Verse ${controller.currentVerse}', style: TextStyle(
+      color: Colors.grey[500],
+      fontFamily: GoogleFonts.oswald().fontFamily,
+    ),);
   }
 }
