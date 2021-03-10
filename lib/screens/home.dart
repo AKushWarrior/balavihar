@@ -1,6 +1,5 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../utils.dart';
 
@@ -62,19 +61,19 @@ class NeuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: cb,
-      child: Neumorphic(
-        padding: EdgeInsets.symmetric(
-          // TODO: Normalize vertical padding when Songs are ready
-          vertical: text != 'Shlokams\nComing Soon'
-              ? Screen.height(context) / 17
-              : Screen.height(context) / 17 - Screen.height(context) / 60,
-          horizontal: Screen.width(context) / 27,
-        ),
-        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
-        style: NeumorphicStyle(
-          color: color,
-        ),
+      child: Card(
+        elevation: 10,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Screen.borderRadius)),
+        margin: EdgeInsets.symmetric(horizontal: Screen.marginX(context)),
+        color: color,
         child: Container(
+          padding: EdgeInsets.symmetric(
+            // TODO: Normalize vertical padding when Songs are ready
+            vertical: text != 'Shlokams\nComing Soon'
+                ? Screen.height(context) / 25
+                : Screen.height(context) / 25 - Screen.height(context) / 95,
+            horizontal: Screen.marginX(context),
+          ),
           width: Screen.width(context) / 3 * 2.5,
           alignment: Alignment.center,
           child: Text(

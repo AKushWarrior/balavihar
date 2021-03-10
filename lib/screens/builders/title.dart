@@ -1,5 +1,5 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:peninsulabalvihar/utils.dart';
 
@@ -17,24 +17,24 @@ class PageTitle extends StatelessWidget {
       alignment: Alignment.center,
       child: Row(children: [
         IconButton(
-          icon: NeumorphicIcon(
+          icon: Icon(
             Icons.arrow_back_ios,
             size: 36,
-            style: const NeumorphicStyle(color: Colors.white),
+            color: Colors.white,
             //color: Colors.white,
           ),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Beamer.of(context).beamBack(),
         ),
         Container(width: Screen.width(context) / 50),
         Container(
             alignment: Alignment.center,
-            child: NeumorphicText(
+            child: Text(
               title,
-              textStyle: NeumorphicTextStyle(
+              style: TextStyle(
                 fontFamily: GoogleFonts.oswald().fontFamily,
                 fontSize: fontSize,
+                color: Colors.white,
               ),
-              style: const NeumorphicStyle(color: Colors.white),
             )),
       ]),
     );

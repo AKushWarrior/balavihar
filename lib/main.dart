@@ -70,7 +70,7 @@ class BhajanLocation extends BeamLocation {
 class ShlokamLocation extends BeamLocation {
   @override
   List<BeamPage> pagesBuilder(BuildContext context) {
-    return [...HomeLocation().pagesBuilder(context), BeamPage(key: ValueKey("shlokams"), child: SongPage(SongType.shlokams))];
+    return [...HomeLocation().pagesBuilder(context), BeamPage(key: ValueKey('shlokams'), child: SongPage(SongType.shlokams))];
   }
   @override
   List<String> get pathBlueprints => ['/shlokams'];

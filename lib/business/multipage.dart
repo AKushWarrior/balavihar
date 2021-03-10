@@ -176,3 +176,6 @@ StateNotifierProvider<SongNotifier> generateSongProvider(SongController control)
     return notifier;
   });
 }
+
+final bhajanProvider = generateMultipageProvider(BhajanController());
+final shlokamProvider = generateMultipageProvider(ShlokamController());

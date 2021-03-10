@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class SeekingProgressBar extends StatefulWidget {
   final AudioPlayer player;
@@ -18,7 +18,7 @@ class SeekingProgressBar extends StatefulWidget {
 class _SeekingProgressBarState extends State<SeekingProgressBar> {
   Timer _progressTimer;
 
-  AudioPlayer get audioPlayer => this.widget.player;
+  AudioPlayer get audioPlayer => widget.player;
 
   Duration get totalTime => audioPlayer.duration;
 
@@ -44,12 +44,7 @@ class _SeekingProgressBarState extends State<SeekingProgressBar> {
 
   @override
   Widget build(BuildContext context) {
-    return NeumorphicSlider(
-      height: 10,
-      style: SliderStyle(
-        accent: Colors.red[800],
-        variant: Colors.red[800],
-      ),
+    return SfSlider(
       value: ((timePassed?.inMilliseconds) ?? 0) /
           ((totalTime?.inMilliseconds) ?? 1),
       min: 0,

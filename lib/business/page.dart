@@ -36,7 +36,7 @@ class SinglePageUnit extends Unit<String> {
 }
 
 class AssemblyController extends Controller {
-  final _model = AssemblyModel();
+  AssemblyModel _model = AssemblyModel();
   List<bool> expanded;
   List<bool> playing;
   int highlighted;
@@ -50,6 +50,19 @@ class AssemblyController extends Controller {
 
   @override
   Model get model => _model;
+
+  AssemblyController clone() {
+    return AssemblyController()
+      .._model=_model
+        ..expanded=expanded
+        ..playing=playing
+        ..highlighted=highlighted
+        ..playingAll=playingAll
+        ..pausedAll=pausedAll
+        ..restartableAll=restartableAll
+        .._timer=_timer
+        ..streamSub=streamSub;
+  }
 }
 
 class AssemblyNotifier extends StateNotifier<AssemblyController> {
@@ -59,14 +72,14 @@ class AssemblyNotifier extends StateNotifier<AssemblyController> {
     state.pausedAll = false;
     state.restartableAll = false;
     state.expanded = List.generate(20, (i) => false);
-    state = state..playing = List.generate(20, (i) => false);
+    state = state.clone()..playing = List.generate(20, (i) => false);
     state.streamSub =
         state._model.player.playbackEventStream.listen((PlaybackEvent event) {
       if (event.processingState == ProcessingState.completed) {
         state.playingAll = false;
         state.expanded = List.generate(20, (i) => false);
         state.playing = List.generate(20, (i) => false);
-        state= state..highlighted = null;
+        state = state.clone()..highlighted = null;
       }
     });
   }
@@ -74,29 +87,29 @@ class AssemblyNotifier extends StateNotifier<AssemblyController> {
   void onClose() {
     state._model.player.stop();
     state.streamSub.cancel();
-    state = state.._model.player.dispose();
+    state = state.clone().._model.player.dispose();
   }
 
   void setExpanded(int index, bool newVal) {
-    state = state..expanded[index] = newVal;
+    state = state.clone()..expanded[index] = newVal;
   }
 
   void setPlaying(int index, bool newVal) {
     state.playing = List.generate(20, (i) => false);
     state.restartableAll = false;
-    state = state..playing[index] = newVal;
+    state = state.clone()..playing[index] = newVal;
   }
 
   void playAll() {
     state.playingAll = true;
     state.playing = List.generate(20, (i) => false);
-    state = state..restartableAll = true;
+    state = state.clone()..restartableAll = true;
     if (!state.pausedAll) {
       state.model.player.setAudioSource(
         ConcatenatingAudioSource(
             children: List.generate(
-                (state.model.songData as Map).length,
-                (int i) => AudioSource.uri(Uri.parse(state.model.songData.values
+                songData.length,
+                (int i) => AudioSource.uri(Uri.parse(songData.values
                     .toList()[i][SongInfo.music] as String)))),
       );
     }
@@ -104,7 +117,7 @@ class AssemblyNotifier extends StateNotifier<AssemblyController> {
     state.model.player.currentIndexStream.listen((event) {
       state.highlighted = event;
     });
-    state = state..model.player.play();
+    state = state.clone()..model.player.play();
   }
 
   void pauseAll() {
@@ -113,11 +126,11 @@ class AssemblyNotifier extends StateNotifier<AssemblyController> {
     state.restartableAll = true;
     state.playing = List.generate(20, (i) => false);
     state.model.player.pause();
-    state = state..pausedAll = true;
+    state = state.clone()..pausedAll = true;
   }
 
   void restartAll() {
-    state = state..pausedAll = false;
+    state = state.clone()..pausedAll = false;
     playAll();
   }
 
@@ -131,5 +144,7 @@ StateNotifierProvider<AssemblyNotifier> generateAssemblyProvider(AssemblyControl
     return notifier;
   });
 }
+
+StateNotifierProvider<AssemblyNotifier> assemblyProvider = generateAssemblyProvider(AssemblyController());
 
 

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:peninsulabalvihar/business/page.dart';
 import 'package:peninsulabalvihar/utils.dart';
 
@@ -18,7 +16,6 @@ class AssemblyCard extends HookWidget {
     var controller = notifier.read;
 
     var title = '${unit.key}: ${unit.lyrics[0]}';
-    var subtitle = unit.desc;
     var lyrics = unit.lyrics;
     final childrenList = <Widget>[];
     for (final txt in lyrics) {
@@ -26,12 +23,10 @@ class AssemblyCard extends HookWidget {
           padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
           child: Text(txt, style: const TextStyle(color: Colors.black))));
     }
-    return Neumorphic(
-      boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Screen.borderRadius)),
       margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: Screen.marginX(context)),
-      style: const NeumorphicStyle(
-        color: Colors.white,
-      ),
+      color: Colors.white,
       child: Container(
         child: ExpansionTile(
           maintainState: false,

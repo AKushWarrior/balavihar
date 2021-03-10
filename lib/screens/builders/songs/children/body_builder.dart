@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:peninsulabalvihar/business/multipage.dart';
 
-import '../../../utils.dart';
+import '../../../../utils.dart';
 
 class SongBody extends StatelessWidget {
   final SongController childControl;
@@ -13,15 +12,18 @@ class SongBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Neumorphic(
-          style: const NeumorphicStyle(color: Colors.white),
-          margin: EdgeInsets.symmetric(horizontal: Screen.marginX(context)),
+        child: Card(
+      color: Colors.white,
+      margin: EdgeInsets.symmetric(horizontal: Screen.marginX(context)),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Screen.borderRadius)),
+      child: Container(
           padding: const EdgeInsets.all(10.0),
-          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10.0)),
-          child: fullSongView(childControl),
-        ));
+          child: fullSongView(childControl)),
+    ));
   }
 }
+
 Widget fullSongView(SongController control) {
   return Column(
     children: [
