@@ -7,12 +7,12 @@ environment:
   sdk: ">=2.3.0 <3.0.0"
 
 dependencies:
-  flutter_hooks: any
-  hooks_riverpod: any
-  beamer: any
+  flutter_hooks: ^0.16.0
+  hooks_riverpod: ^0.13.1
+  beamer: 1.0.0-nullsafety.1
   flutter_neumorphic: ^2.2.0
-  google_fonts: ^1.1.0
-  just_audio: ^0.6.3
+  google_fonts: ^2.0.0
+  just_audio: ^0.7.0
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
