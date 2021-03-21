@@ -15,6 +15,7 @@ class BalviharApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Nav.init();
     return MaterialApp(
+      debugShowCheckModeBanner: false,
       title: 'Balvihar Demo',
       theme: ThemeData.light().copyWith(
         textTheme: GoogleFonts.oswaldTextTheme().copyWith(
