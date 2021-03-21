@@ -14,6 +14,8 @@ import 'package:peninsulabalvihar/screens/song.dart';
 class Screen {
   static double marginX(BuildContext context) => width(context) / 24;
 
+  static double bottomButtonMargin(BuildContext context) => width(context) / 25;
+
   static double width(BuildContext context) =>
       MediaQuery.of(context).size.width;
 
