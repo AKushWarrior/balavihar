@@ -15,9 +15,11 @@ class ChildSongScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final childControl = SongController(control.model, control.selected, control);
+    final childControl =
+        SongController(control.model, control.selected, control);
     final childProvider = generateSongProvider(childControl);
-    return ZoomIn(child: Scaffold(
+    return ZoomIn(
+        child: Scaffold(
       body: Theme(
         data: Theme.of(context).copyWith(accentColor: Colors.red[700]),
         child: Container(

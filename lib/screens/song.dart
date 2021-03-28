@@ -10,14 +10,14 @@ class SongPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.red[700],
-        body: Theme(
-          data: Theme.of(context).copyWith(accentColor: Colors.red[700]),
-          child: type == SongType.bhajans
-              ? SongParent('Bhajans', bhajanProvider)
-              : null,
-        ),
-      );
+      backgroundColor: Colors.red[700],
+      body: Theme(
+        data: Theme.of(context).copyWith(accentColor: Colors.red[700]),
+        child: type == SongType.bhajans
+            ? SongParent('Bhajans', bhajanProvider)
+            : null,
+      ),
+    );
   }
 }
 

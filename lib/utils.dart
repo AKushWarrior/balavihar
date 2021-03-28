@@ -40,13 +40,20 @@ class Nav {
     });
     var childSong = Handler(handlerFunc: (context, _) {
       final args = context.arguments as List<dynamic>;
-      return ChildSongScaffold(args[0] as MultiPageUnit, args[1] as MultiPageController);
+      return ChildSongScaffold(
+          args[0] as MultiPageUnit, args[1] as MultiPageController);
     });
 
     router
       ..define('/', handler: home)
-      ..define('/assembly', handler: assembly, transitionType: TransitionType.cupertinoFullScreenDialog)
-      ..define('/bhajans', handler: bhajans, transitionType: TransitionType.cupertinoFullScreenDialog)
-      ..define('/child', handler: childSong, transitionType: TransitionType.cupertinoFullScreenDialog);
+      ..define('/assembly',
+          handler: assembly,
+          transitionType: TransitionType.cupertinoFullScreenDialog)
+      ..define('/bhajans',
+          handler: bhajans,
+          transitionType: TransitionType.cupertinoFullScreenDialog)
+      ..define('/child',
+          handler: childSong,
+          transitionType: TransitionType.cupertinoFullScreenDialog);
   }
 }

@@ -42,10 +42,10 @@ class AssemblyBottomBar extends HookWidget {
                       isActive: controller.playingAll ||
                           !controller.playing.contains(true),
                       onPressed: controller.playingAll ||
-                          !controller.playing.contains(true)
+                              !controller.playing.contains(true)
                           ? (controller.playingAll
-                          ? notifier.pauseAll
-                          : notifier.playAll)
+                              ? notifier.pauseAll
+                              : notifier.playAll)
                           : null,
                     ),
                     createBottomButton(

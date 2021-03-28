@@ -1,6 +1,6 @@
 import '../../setup.dart';
 
-const omjaiarthi = {
+const omJaiArthi = {
   SongInfo.name: 'Om Jai Arthi',
   SongInfo.author: 'Pandit Shardha Ram Phillauri (1837 – 1881)',
   SongInfo.date: 'Fall 2010',

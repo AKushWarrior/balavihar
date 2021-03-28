@@ -19,21 +19,20 @@ class MultiPageModel extends Model {
       type == 'Shlokams' ? shlokams.songData : bhajans.songData;
 
   @override
-  List<String> fetchKeys() => List.generate(songData.length, (index) => '$index');
+  List<String> fetchKeys() =>
+      List.generate(songData.length, (index) => '$index');
 
   @override
   MultiPageUnit findByKey(String key) {
     var song = songData[int.parse(key)];
-    List<List<String>> verses = song[SongInfo.verses] as List<List<String>>;
+    var verses = song[SongInfo.verses] as List<List<String>>;
     var prefix = song[SongInfo.prefix] as String;
-    print(
-        'https://balvihar.s3-us-west-1.amazonaws.com/bhajans/${prefix}/${prefix}_${1}.m4a');
     var subunits = List.generate(
       verses.length,
       (i) => SinglePageUnit(
           '$key.${i + 1}',
           'Verse ${i + 1}',
-          'https://balvihar.s3-us-west-1.amazonaws.com/bhajans/${prefix}/${prefix}_${i + 1}.m4a',
+          'https://balvihar.s3-us-west-1.amazonaws.com/bhajans/$prefix/${prefix}_${i + 1}.m4a',
           null,
           verses[i],
           null,
@@ -128,16 +127,17 @@ class MultiPageNotifier extends StateNotifier<MultiPageController> {
 class SongNotifier extends StateNotifier<SongController> {
   SongNotifier(SongController control) : super(control) {
     state.model.player.pause();
-    state = state..model.player.setAudioSource(
-      ConcatenatingAudioSource(
-        children: List.generate(
-          state.base.lyrics.length,
-              (int i) => AudioSource.uri(
-            Uri.parse(state.base.lyrics[i].music),
-          ),
-        ),
-      ),
-    );
+    state = state
+      ..model.player.setAudioSource(
+            ConcatenatingAudioSource(
+              children: List.generate(
+                state.base.lyrics.length,
+                (int i) => AudioSource.uri(
+                  Uri.parse(state.base.lyrics[i].music),
+                ),
+              ),
+            ),
+          );
     state.sub = state.model.player.currentIndexStream.listen((int event) {
       if (event != null) state = state..currentVerse = event + 1;
     });
@@ -161,7 +161,8 @@ class SongNotifier extends StateNotifier<SongController> {
   SongController get read => state;
 }
 
-StateNotifierProvider<MultiPageNotifier> generateMultipageProvider(MultiPageController control) {
+StateNotifierProvider<MultiPageNotifier> generateMultipageProvider(
+    MultiPageController control) {
   return StateNotifierProvider<MultiPageNotifier>((ref) {
     var notifier = MultiPageNotifier(control);
     ref.onDispose(() => notifier.onClose());
@@ -169,7 +170,8 @@ StateNotifierProvider<MultiPageNotifier> generateMultipageProvider(MultiPageCont
   });
 }
 
-StateNotifierProvider<SongNotifier> generateSongProvider(SongController control) {
+StateNotifierProvider<SongNotifier> generateSongProvider(
+    SongController control) {
   return StateNotifierProvider<SongNotifier>((ref) {
     var notifier = SongNotifier(control);
     ref.onDispose(() => notifier.onClose());

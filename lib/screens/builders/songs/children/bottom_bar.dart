@@ -12,6 +12,53 @@ class SongBottomBar extends HookWidget {
 
   SongBottomBar(this.provider);
 
+  Widget _buttonList(
+      BuildContext context, SongController controller, SongNotifier notifier) {
+    if (controller.base.verses.length == 1) {
+      return createBottomButton(
+        context: context,
+        content: controller.isPlaying ? 'Pause' : 'Play',
+        swatch: Colors.red,
+        isActive: true,
+        onPressed: controller.isPlaying ? notifier.pause : notifier.play,
+        expand: true,
+      );
+    } else {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          createBottomButton(
+            context: context,
+            content: 'Prev.',
+            swatch: Colors.red,
+            isActive: controller.model.player.hasPrevious,
+            onPressed: controller.model.player.hasPrevious
+                ? controller.model.player.seekToPrevious
+                : null,
+          ),
+          createBottomButton(
+            context: context,
+            content: controller.isPlaying ? 'Pause' : 'Play',
+            swatch: Colors.red,
+            isActive: true,
+            onPressed: controller.isPlaying ? notifier.pause : notifier.play,
+          ),
+          createBottomButton(
+            context: context,
+            content: 'Next',
+            swatch: Colors.red,
+            isActive: controller.model.player.hasNext,
+            onPressed: controller.model.player.hasNext
+                ? controller.model.player.seekToNext
+                : null,
+          ),
+        ],
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var notifier = useProvider(provider);
@@ -23,46 +70,13 @@ class SongBottomBar extends HookWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Screen.borderRadius)),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: Screen.marginX(context)),
         height: 160,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
-                child: SeekingProgressBar(controller.model.player, controller)),
-            Container(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  createBottomButton(
-                    context: context,
-                    content: 'Prev.',
-                    swatch: Colors.red,
-                    isActive: controller.model.player.hasPrevious,
-                    onPressed: controller.model.player.hasPrevious
-                        ? controller.model.player.seekToPrevious
-                        : null,
-                  ),
-                  createBottomButton(
-                    context: context,
-                    content: controller.isPlaying ? 'Pause' : 'Play',
-                    swatch: Colors.red,
-                    isActive: true,
-                    onPressed: controller.isPlaying ? notifier.pause : notifier.play,
-                  ),
-                  createBottomButton(
-                    context: context,
-                    content: 'Next',
-                    swatch: Colors.red,
-                    isActive: controller.model.player.hasNext,
-                    onPressed: controller.model.player.hasNext
-                        ? controller.model.player.seekToNext
-                        : null,
-                  ),
-                ],
-              ),
-            ),
+            SeekingProgressBar(controller.model.player, controller),
+            _buttonList(context, controller, notifier),
           ],
         ),
       ),

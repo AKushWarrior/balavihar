@@ -10,16 +10,16 @@ class AssemblyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ZoomIn(
       child: Scaffold(
-          backgroundColor: Colors.orange[800],
-          body: Theme(
-            data: assemblyTheme(context),
-            child: Container(
-              color: Colors.orange[800],
-              child: AssemblyCardColumn('Assembly'),
-            ),
+        backgroundColor: Colors.orange[800],
+        body: Theme(
+          data: assemblyTheme(context),
+          child: Container(
+            color: Colors.orange[800],
+            child: AssemblyCardColumn('Assembly'),
           ),
-          bottomNavigationBar: AssemblyBottomBar(),
         ),
-      );
+        bottomNavigationBar: AssemblyBottomBar(),
+      ),
+    );
   }
 }

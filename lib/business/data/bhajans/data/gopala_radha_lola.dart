@@ -1,6 +1,6 @@
 import '../../setup.dart';
 
-const gopalaradhalola = {
+const gopalaRadhaLola = {
   SongInfo.name: 'Gopala Radha Lola',
   SongInfo.author: '',
   SongInfo.date: '',

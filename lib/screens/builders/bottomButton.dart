@@ -8,23 +8,29 @@ OutlinedButton createBottomButton(
     String content,
     Color swatch,
     bool isActive,
-    Function() onPressed}) {
+    Function() onPressed,
+    bool expand = false}) {
+  Widget base = Container(
+    padding: EdgeInsets.symmetric(
+      vertical: 10,
+      horizontal: Screen.bottomButtonMargin(context),
+    ),
+    child: Text(
+      content,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 18,
+        fontFamily: GoogleFonts.oswald().fontFamily,
+        color: isActive ? Colors.black : Colors.grey[300],
+      ),
+    ),
+  );
+  if (expand) {
+    base = Expanded(child: base);
+  }
   return OutlinedButton(
     onPressed: onPressed,
     style: OutlinedButton.styleFrom(primary: swatch),
-    child: Container(
-      padding: EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: Screen.bottomButtonMargin(context),
-      ),
-      child: Text(
-        content,
-        style: TextStyle(
-          fontSize: 18,
-          fontFamily: GoogleFonts.oswald().fontFamily,
-          color: isActive ? Colors.black : Colors.grey[300],
-        ),
-      ),
-    ),
+    child: base,
   );
 }

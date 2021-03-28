@@ -12,11 +12,10 @@ class PageTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
-      margin: EdgeInsets.fromLTRB(Screen.marginX(context), 10, Screen.marginX(context), 0),
+      margin: EdgeInsets.fromLTRB(
+          Screen.marginX(context), 10, Screen.marginX(context), 0),
       alignment: Alignment.center,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+      child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         IconButton(
           splashColor: Colors.transparent,
           hoverColor: Colors.transparent,
@@ -31,13 +30,13 @@ class PageTitle extends StatelessWidget {
         Container(width: Screen.width(context) / 50),
         Container(
             child: Text(
-              title,
-              style: TextStyle(
-                fontFamily: GoogleFonts.oswald().fontFamily,
-                fontSize: fontSize,
-                color: Colors.white,
-              ),
-            )),
+          title,
+          style: TextStyle(
+            fontFamily: GoogleFonts.oswald().fontFamily,
+            fontSize: fontSize,
+            color: Colors.white,
+          ),
+        )),
       ]),
     );
   }

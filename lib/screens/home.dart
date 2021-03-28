@@ -24,8 +24,8 @@ class HomePage extends StatelessWidget {
               child: NeuButton('Songs & Bhajans', Colors.red[700],
                   () => Nav.router.navigateTo(context, '/bhajans'))),
           Center(
-              child: NeuButton(
-                  'Shlokams\nComing Soon', Colors.green[700], null)),
+              child:
+                  NeuButton('Shlokams\nComing Soon', Colors.green[700], null)),
         ],
       ),
       /* Floating Action Button for Search | TODO implement search feature
@@ -62,7 +62,8 @@ class NeuButton extends StatelessWidget {
       onTap: cb,
       child: Card(
         elevation: 10,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Screen.borderRadius)),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Screen.borderRadius)),
         margin: EdgeInsets.symmetric(horizontal: Screen.marginX(context)),
         color: color,
         child: Container(

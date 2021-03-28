@@ -12,9 +12,9 @@ import '../../../../utils.dart';
 class SongParent extends HookWidget {
   final String title;
   final StateNotifierProvider<MultiPageNotifier> provider;
-  
+
   SongParent(this.title, this.provider);
-  
+
   @override
   Widget build(BuildContext context) {
     final children = <Widget>[];
@@ -26,11 +26,14 @@ class SongParent extends HookWidget {
     for (var key in control.read.model.fetchKeys()) {
       var unit = control.read.model.findByKey(key);
       children.add(Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Screen.borderRadius)),
-        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: Screen.marginX(context)),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Screen.borderRadius)),
+        margin: EdgeInsets.symmetric(
+            vertical: 10.0, horizontal: Screen.marginX(context)),
         color: Colors.white,
         child: ListTile(
-          contentPadding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
           title: Text(
             unit.name,
             textAlign: TextAlign.center,
@@ -43,7 +46,8 @@ class SongParent extends HookWidget {
           ),
           onTap: () {
             control.selected = control.read.model.findByKey(key);
-            Nav.router.navigateTo(context, '/child', routeSettings: RouteSettings(arguments: [unit, control.read]));
+            Nav.router.navigateTo(context, '/child',
+                routeSettings: RouteSettings(arguments: [unit, control.read]));
           },
         ),
       ));

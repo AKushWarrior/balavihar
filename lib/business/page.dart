@@ -53,15 +53,15 @@ class AssemblyController extends Controller {
 
   AssemblyController clone() {
     return AssemblyController()
-      .._model=_model
-        ..expanded=expanded
-        ..playing=playing
-        ..highlighted=highlighted
-        ..playingAll=playingAll
-        ..pausedAll=pausedAll
-        ..restartableAll=restartableAll
-        .._timer=_timer
-        ..streamSub=streamSub;
+      .._model = _model
+      ..expanded = expanded
+      ..playing = playing
+      ..highlighted = highlighted
+      ..playingAll = playingAll
+      ..pausedAll = pausedAll
+      ..restartableAll = restartableAll
+      .._timer = _timer
+      ..streamSub = streamSub;
   }
 }
 
@@ -109,8 +109,8 @@ class AssemblyNotifier extends StateNotifier<AssemblyController> {
         ConcatenatingAudioSource(
             children: List.generate(
                 songData.length,
-                (int i) => AudioSource.uri(Uri.parse(songData.values
-                    .toList()[i][SongInfo.music] as String)))),
+                (int i) => AudioSource.uri(Uri.parse(
+                    songData.values.toList()[i][SongInfo.music] as String)))),
       );
     }
     state.pausedAll = false;
@@ -137,7 +137,8 @@ class AssemblyNotifier extends StateNotifier<AssemblyController> {
   AssemblyController get read => state;
 }
 
-StateNotifierProvider<AssemblyNotifier> generateAssemblyProvider(AssemblyController control) {
+StateNotifierProvider<AssemblyNotifier> generateAssemblyProvider(
+    AssemblyController control) {
   return StateNotifierProvider<AssemblyNotifier>((ref) {
     var notifier = AssemblyNotifier(control);
     ref.onDispose(() => notifier.onClose());
@@ -145,6 +146,5 @@ StateNotifierProvider<AssemblyNotifier> generateAssemblyProvider(AssemblyControl
   });
 }
 
-StateNotifierProvider<AssemblyNotifier> assemblyProvider = generateAssemblyProvider(AssemblyController());
-
-
+StateNotifierProvider<AssemblyNotifier> assemblyProvider =
+    generateAssemblyProvider(AssemblyController());

@@ -24,41 +24,43 @@ class AssemblyCard extends HookWidget {
           child: Text(txt, style: const TextStyle(color: Colors.black))));
     }
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Screen.borderRadius)),
-      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: Screen.marginX(context)),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Screen.borderRadius)),
+      margin: EdgeInsets.symmetric(
+          vertical: 10.0, horizontal: Screen.marginX(context)),
       color: Colors.white,
       child: Container(
         child: ExpansionTile(
           backgroundColor: Colors.transparent,
           maintainState: false,
           key: PageStorageKey<String>('$index'),
-          tilePadding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 7.5),
+          tilePadding:
+              const EdgeInsets.symmetric(vertical: 5.0, horizontal: 7.5),
           initiallyExpanded: controller.expanded[index],
           leading: controller.expanded[index]
               ? const Icon(Icons.arrow_drop_down)
               : const Icon(Icons.arrow_right),
           trailing: Container(
             width: 90,
-            child:
-            IconButton(
+            child: IconButton(
               icon: controller.playing[index]
                   ? const Icon(Icons.pause)
                   : const Icon(Icons.play_arrow),
               onPressed: controller.playingAll
                   ? null
                   : controller.playing[index]
-                  ? () {
-                controller.model.player.stop();
-                notifier.setPlaying(index, false);
-                controller.highlighted = null;
-              }
-                  : () {
-                unit.play();
-                notifier.setPlaying(index, true);
-                controller.highlighted = index;
-              },
+                      ? () {
+                          controller.model.player.stop();
+                          notifier.setPlaying(index, false);
+                          controller.highlighted = null;
+                        }
+                      : () {
+                          unit.play();
+                          notifier.setPlaying(index, true);
+                          controller.highlighted = index;
+                        },
               color:
-              controller.playingAll ? Colors.grey[100] : Colors.grey[600],
+                  controller.playingAll ? Colors.grey[100] : Colors.grey[600],
             ),
           ),
           onExpansionChanged: (b) {

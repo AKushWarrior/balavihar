@@ -59,13 +59,13 @@ class _SeekingProgressBarState extends State<SeekingProgressBar> {
       mapValueToString: (double value) {
         var duration = Duration(milliseconds: value.round());
         if (duration.inHours > 0) {
-          var minutes = '${duration.inMinutes%60}';
+          var minutes = '${duration.inMinutes % 60}';
           if (minutes.length == 1) {
             minutes = '0' + minutes;
           }
           return '${duration.inHours}:$minutes';
         } else {
-          var seconds = '${duration.inSeconds%60}';
+          var seconds = '${duration.inSeconds % 60}';
           if (seconds.length == 1) {
             seconds = '0' + seconds;
           }
@@ -90,9 +90,15 @@ class PlayingText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Verse ${controller.currentVerse}', style: TextStyle(
-      color: Colors.grey[500],
-      fontFamily: GoogleFonts.oswald().fontFamily,
-    ),);
+    var content = controller.base.verses.length == 1
+        ? 'Full Song'
+        : 'Verse ${controller.currentVerse}';
+    return Text(
+      content,
+      style: TextStyle(
+        color: Colors.grey[500],
+        fontFamily: GoogleFonts.oswald().fontFamily,
+      ),
+    );
   }
 }
