@@ -8,8 +8,7 @@ OutlinedButton createBottomButton(
     String content,
     Color swatch,
     bool isActive,
-    Function() onPressed,
-    bool expand = false}) {
+    Function() onPressed}) {
   Widget base = Container(
     padding: EdgeInsets.symmetric(
       vertical: 10,
@@ -25,9 +24,6 @@ OutlinedButton createBottomButton(
       ),
     ),
   );
-  if (expand) {
-    base = Expanded(child: base);
-  }
   return OutlinedButton(
     onPressed: onPressed,
     style: OutlinedButton.styleFrom(primary: swatch),

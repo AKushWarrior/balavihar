@@ -21,7 +21,6 @@ class SongBottomBar extends HookWidget {
         swatch: Colors.red,
         isActive: true,
         onPressed: controller.isPlaying ? notifier.pause : notifier.play,
-        expand: true,
       );
     } else {
       return Row(
